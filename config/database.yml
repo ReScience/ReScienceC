@@ -6,11 +6,11 @@ default: &default
 
 development:
   <<: *default
-  database: joss_development
+  database: resciencec_development
 
 test:
   <<: *default
-  database: joss_test
+  database: resciencec_test
 
 production:
   adapter: postgresql
