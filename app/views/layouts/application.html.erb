@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-47852178-4"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', '<%= setting(:google_analytics) %>');
-  </script>
-  
   <title><%= setting(:name) %></title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_importmap_tags %>
