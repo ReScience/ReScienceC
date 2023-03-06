@@ -195,8 +195,8 @@ describe Paper do
     it "should know how to generate a PDF URL for Google Scholar" do
       paper = create(:accepted_paper)
 
-      expect(paper.seo_url).to eq('http://joss.theoj.org/papers/10.21105/joss.00000')
-      expect(paper.seo_pdf_url).to eq('http://joss.theoj.org/papers/10.21105/joss.00000.pdf')
+      expect(paper.seo_url).to eq('http://resciencec.org/papers/10.21105/resciencec.00000')
+      expect(paper.seo_pdf_url).to eq('http://resciencec.org/papers/10.21105/resciencec.00000.pdf')
     end
   end
 
@@ -204,8 +204,8 @@ describe Paper do
     it "should know how to generate a PDF URL for Google Scholar" do
       paper = create(:under_review_paper)
 
-      expect(paper.seo_url).to eq('http://joss.theoj.org/papers/48d24b0158528e85ac7706aecd8cddc4')
-      expect(paper.seo_pdf_url).to eq('http://joss.theoj.org/papers/48d24b0158528e85ac7706aecd8cddc4.pdf')
+      expect(paper.seo_url).to eq('http://resciencec.org/papers/48d24b0158528e85ac7706aecd8cddc4')
+      expect(paper.seo_pdf_url).to eq('http://resciencec.org/papers/48d24b0158528e85ac7706aecd8cddc4.pdf')
     end
   end
 
@@ -339,7 +339,7 @@ describe Paper do
     subject { paper.meta_review_body(editor, 'Important Editor') }
 
     context "with an editor" do
-      let(:editor) { "@joss_editor" }
+      let(:editor) { "@journal_editor" }
 
       it "renders text" do
         is_expected.to match /#{paper.submitting_author.github_username}/
@@ -348,7 +348,7 @@ describe Paper do
         is_expected.to match /Important Editor/
       end
 
-      it { is_expected.to match "The AEiC suggestion for the handling editor is @joss_editor" }
+      it { is_expected.to match "The AEiC suggestion for the handling editor is @journal_editor" }
     end
 
     context "with no editor" do
@@ -360,7 +360,7 @@ describe Paper do
         is_expected.to match /#{Rails.application.settings['reviewers_lookup_url']}/
       end
 
-      it { is_expected.to match "Currently, there isn't a JOSS editor assigned" }
+      it { is_expected.to match "Currently, there isn't a ReScienceC editor assigned" }
     end
   end
 

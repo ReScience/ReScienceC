@@ -1,11 +1,11 @@
 {
-  "name": "JOSS",
-  "description": "The JOSS application",
+  "name": "ReScienceC",
+  "description": "The ReScienceC application",
   "keywords": [
-    "JOSS",
+    "ReScienceC",
     "Open Journals"
   ],
-  "website": "http://joss.theoj.org",
+  "website": "http://ReScienceC.org",
   "repository": "https://github.com/openjournals/joss/tree/generalize",
   "success_url": "/",
   "scripts": {
@@ -42,7 +42,7 @@
   "formation": {
     "web": {
       "quantity": 1,
-      "size": "hobby"
+      "size": "basic"
     }
   },
   "buildpacks": [
@@ -53,7 +53,7 @@
   "environments": {
     "test": {
       "scripts": {
-        "test": "bundle exec rake test"
+        "test": "bundle exec bin/rails spec"
       }
     }
   }

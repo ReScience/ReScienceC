@@ -50,7 +50,7 @@ describe 'papers/show.html.erb' do
       render template: "papers/show", formats: :html
 
       # Paper metadata
-      expect(rendered).to have_title("The Journal of Open Source Software: #{paper.scholar_title}")
+      expect(rendered).to have_title("ReScience C: #{paper.scholar_title}")
 
       expect(rendered).to have_css("meta[name='citation_title']", visible: false)
       expect(rendered).to have_css("meta[content='#{paper.scholar_title}']", visible: false)
@@ -70,7 +70,7 @@ describe 'papers/show.html.erb' do
       expect(rendered).to have_css("meta[content='#{paper.seo_pdf_url}']", visible: false)
 
       expect(rendered).to have_css("meta[name='citation_doi']", visible: false)
-      expect(rendered).to have_css("meta[content='10.21105/joss.00000']", visible: false)
+      expect(rendered).to have_css("meta[content='10.21105/resciencec.00000']", visible: false)
 
       expect(rendered).to have_css("meta[name='citation_issn']", visible: false)
       expect(rendered).to have_css("meta[content='#{Rails.application.settings['issn']}']", visible: false)
