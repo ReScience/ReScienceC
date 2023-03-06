@@ -11,7 +11,6 @@
       <p class="lead">ReScience C is collaborative and open by design. Everything can be forked and modified.</p>
       <div class="hero-ctas">
         <%= link_to "Submit a paper to #{Rails.application.settings['abbreviation']}".html_safe, new_paper_path, class: "btn" %>
-        <%= link_to "🎉 Volunteer to review".html_safe, setting(:reviewers_signup_url), class: "btn" %>
       </div>
     </div>
 
@@ -20,13 +19,13 @@
       <%= image_tag 'icon_papers.svg' %>
       Explore Papers
       <% end %>
-      <%= link_to "https://joss.readthedocs.io/en/latest/" do %>
-      <%= image_tag 'icon_docs.svg' %>
-      Documentation
-      <% end %>
       <%= link_to about_path do %>
       <%= image_tag 'icon_info.svg' %>
       Learn More
+      <% end %>
+      <%= link_to setting(:reviewers_signup_url) do %>
+      <%= image_tag 'icon_docs.svg' %>
+      Volunteer to review
       <% end %>
     </div>
   </div>
