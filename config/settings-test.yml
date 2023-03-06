@@ -1,26 +1,25 @@
 # Changing this file necessitates a server restart
-name: "The Journal of Open Source Software"
-abbreviation: "JOSS"
-issn: "2475-9066"
-tagline: "a <strong>developer friendly</strong> journal for research software packages."
-logo_url: "http://joss.theoj.org/logo_large.png"
-url: "http://joss.theoj.org"
-editor_email: "joss.theoj@gmail.com"
-noreply_email: "noreply@joss.theoj.org"
-twitter: "@JOSS_TheOJ"
-mastodon_url: "https://fosstodon.org/@JOSS"
-google_analytics: "UA-47852178-4"
-github: "openjournals/joss"
-reviews: "openjournals/joss-reviews-testing"
-papers_repo: "openjournals/joss-papers-testing"
-papers_html_url: "https://www.theoj.org/joss-papers"
-reviewers_url: "https://reviewers.joss.theoj.org"
-reviewers_signup_url: "https://reviewers.joss.theoj.org/join"
-reviewers_lookup_url: "https://reviewers.joss.theoj.org/lookup"
+name: "ReScience C"
+abbreviation: "ReScience C"
+issn: "2430-3658"
+tagline: "Reproducible Science is good. Replicated Science is better."
+logo_url: "/logo_large.png"
+url: "http://resciencec.org"
+editor_email: "admin@resciencec.org"
+noreply_email: "noreply@resciencec.org"
+twitter: "@RescienceC"
+mastodon_url: "https://fosstodon.org/@RescienceC"
+google_analytics: ""
+github: "xuanxu/rescience"
+reviews: "aliadalabs/resciencec-reviews-testing"
+papers_repo: "aliadalabs/resciencec-papers-testing"
+papers_html_url: "https://rescience.github.io/read/"
+reviewers_signup_url: "https://github.com/ReScience/ReScience/issues/27"
 product: "software" # the *thing* being submitted for review
+reviewers: "http://rescience.github.io/board/#reviewers"
 submission_enquiry: |-
   **Project repository URL:** INSERT YOUR REPOSITORY LINK HERE
 
-  Briefly describe your software, its research application and any questions you have about the JOSS submission criteria.
+  Briefly describe your software, its research application and any questions you have about the ReScience C submission criteria.
 paper_types: []
-bot_username: editorialbot
+bot_username: botsci
