@@ -1,14 +1,14 @@
 # Changing this file necessitates a server restart
 name: "ReScience C"
-abbreviation: "ReScienceC"
+abbreviation: "ReScience C"
 issn: "2430-3658"
 tagline: "Reproducible Science is good. Replicated Science is better."
 logo_url: "/logo_large.jpg"
-url: "https://resciencec-test.herokuapp.com"
-editor_email: "admin@resciencec.theoj.org"
-noreply_email: "noreply@resciencec.theoj.org"
-twitter: "@ReScienceEds"
-mastodon_url: "https://fosstodon.org/@ReScienceC"
+url: "https://resciencec.org"
+editor_email: "admin@resciencec.org"
+noreply_email: "noreply@resciencec.org"
+twitter: "@RescienceC"
+mastodon_url: "https://fosstodon.org/@RescienceC"
 #google_analytics: ""
 github: "xuanxu/rescience"
 reviews: "aliadalabs/resciencec-reviews-testing"
@@ -16,10 +16,11 @@ papers_repo: "aliadalabs/resciencec-papers-testing"
 papers_html_url: "https://rescience.github.io/read/"
 reviewers_signup_url: "https://github.com/ReScience/ReScience/issues/27"
 product: "software" # the *thing* being submitted for review
-reviewers: "https://resciencec-test.herokuapp.com/about#reviewers"
+reviewers: "http://rescience.github.io/board/#reviewers"
+
 submission_enquiry: |-
   **Project repository URL:** INSERT YOUR REPOSITORY LINK HERE
 
   Briefly describe your software, its research application and any questions you have about the ReScience C submission criteria.
 paper_types: []
-bot_username: editorialbot
+bot_username: botsci
