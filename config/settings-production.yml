@@ -1,6 +1,6 @@
 # Changing this file necessitates a server restart
 name: "ReScience C"
-abbreviation: "ReScienceC"
+abbreviation: "ReScience C"
 issn: "2430-3658"
 tagline: "Reproducible Science is good. Replicated Science is better."
 logo_url: "/logo_large.jpg"
