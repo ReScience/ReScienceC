@@ -3,8 +3,8 @@
     <div class="col">
       <div class="hero-small">
         <div class="text-center m-auto">
-          <h1>About the <%= Rails.application.settings['name'] %></h1>
-          <p class="lead">The <%= Rails.application.settings['name'] %> is <%= setting(:tagline).html_safe %></p>
+          <h1>About <%= Rails.application.settings['name'] %></h1>
+          <p class="lead"><%= setting(:tagline).html_safe %></p>
         </div>
       </div>
     </div>
@@ -13,255 +13,168 @@
 
 <div class="container">
   <div class="row">
-      <div class="col-lg-9" data-spy="scroll" data-target="#subnav" data-offset="0">
+    <div class="col-lg-9" data-spy="scroll" data-target="#subnav" data-offset="0">
       <div id="about" class="generic-content-item">
-
         <%= render partial: "content/about/general" %>
-
-        <div class="alert alert-primary" role="alert">
-          <%= link_to "🎉 Volunteer to review for #{setting(:abbreviation)} &xrarr;".html_safe, setting(:reviewers_signup_url) %>
-        </div>
       </div>
 
-      <div id="submitting" class="generic-content-item">
+      <div id="write" class="generic-content-item">
+        <h1>Overview of the submission process</h1>
+        <p>
+          The ReScience C editorial board unites scientists who are committed to the open source community. Each editorial board member is specialised in a specific domain of science and is proficient in several programming languages and/or environments. Our aim is to provide all authors with an efficient, constructive and public editorial process.
+        </p>
+        <p>
+          Submitted entries are first considered by a member of the editorial board, who may decide to reject the submission (mainly because it has already been replicated and is publicly available), or assign it to two reviewers for further review and tests. The reviewers evaluate the code and the accompanying material in continuous interaction with the authors through the PR discussion section. If both reviewers managed to run the code and obtain the same results as the ones advertised in the accompanying material, and if they consider that these results are a replication of the original work, the submission is accepted. If any of the two reviewers cannot reproduce the results before the deadline, the submission is rejected and authors are encouraged to resubmit an improved version later.
+        </p>
 
-        <h1>Scope & submission requirements</h1>
-
-        <p>Not all software is eligible to be published in JOSS.</p>
-
-        <p>JOSS publishes articles about research software. This definition includes software that: solves complex modeling problems in a scientific context (physics, mathematics, biology, medicine, social science, neuroscience, engineering); supports the functioning of research instruments or the execution of research experiments; extracts knowledge from large data sets; offers a mathematical library; or similar.</p>
-
-        <p>JOSS submissions must:</p>
-
+        <h2>How to submit?</h2>
         <ul>
-          <li>Be open source (i.e., have an <%= link_to "OSI-approved license", "https://opensource.org/licenses/category", :target => "_blank" %>).</li>
-          <li>Have an obvious research application.</li>
-          <li>Be feature-complete (no half-baked solutions) and be designed for maintainable extension (not one-off modifications).</li>
-          <li>Minor 'utility' packages, including 'thin' API clients, and single-function packages are not acceptable.</li>
+          <li>Upload your code to a public repository (e.g. <a href="https://github.com/" target="_blank">GitHub</a>)</li>
+          <li>Upload your data (if any) to a public repository (e.g. <a href="https://zenodo.org/" target="_blank">Zenodo</a>)</li>
+          <li>Write the corresponding paper using the proposed <a href="https://github.com/rescience/template" target="_blank">LaTeX template</a> or your own template</li>
+          <li>Fill metadata associated with your submission using the <a href="https://github.com/rescience/template" target="_blank">provided template</a></li>
+          <li><a href="https://github.com/rescience/submissions/issues/new/choose" target="_blank">Submit your paper</a></li>
+          <li>Answer reviewers comments and modify your code and paper accordingly</li>
+          <li>Once accepted, you will need to:
+            <ul>
+              <li>complete the metadata in collaboration with the editor</li>
+              <li><a href="https://guides.github.com/activities/citable-code/" target="_blank">upload your code</a> to Zenodo in order to get a DOI.</li>
+            </ul>
+          </li>
         </ul>
 
-        <p>Authors wishing to make a pre-submission enquiry should <%= link_to "open an issue", "https://github.com/#{Rails.application.settings["github"]}/issues/new?title=Pre-submission%20enquiry"%> on the <%= setting(:abbreviation) %> repository.</p>
-        <div class="alert alert-primary" role="alert">
-          <%= link_to "👀Full details about the #{setting(:abbreviation)} submission requirements and submission process&xrarr;".html_safe, "https://joss.readthedocs.io/en/latest/submitting.html" %>
-        </div>
-      </div>
+        <h2>Criteria for Publication</h2>
+        <p>To be considered for publication in ReScience C, any given submission must satisfy the following criteria:</p>
 
-      <div class="generic-content-item" id="editorial_board">
-        <h1>Editorial Board</h1>
-
-        <%- Editor.board.order('last_name ASC').each do |editor| %>
-        <%= render partial: "shared/editor", locals: { editor: editor } %>
-        <%- end %>
-
-        <h2 id="topic_editors">Topic Editors</h2>
-
-        <%- Editor.topic.order('last_name ASC').each do |editor| %>
-        <%= render partial: "shared/editor", locals: { editor: editor } %>
-        <%- end %>
-
-        <h2 id="editors_emeritus">Editors Emeritus</h2>
-        <p><%= Editor.emeritus.order('last_name ASC').collect {|e| e.full_name
-}.join(', ') %></p>
-      </div>
-
-      <div class="generic-content-item" id="contact">
-        <h1>Contact <%= setting(:abbreviation) %></h1>
+        <ul>
+          <li>Rigorous methodology</li>
+          <li>Original source code</li>
+          <li>Substantial evidence for replication of the original results or explanations why original results cannot be replicated</li>
+        </ul>
 
         <p>
-          To suggest a feature, report a bug, or enquire about a possible submission in <%= setting(:abbreviation) %>, please <a href="https://github.com/<%= setting(:github) %>/issues/new">open a GitHub Issue</a>. If you need to contact <%= setting(:abbreviation) %> privately then you can <%= mail_to "admin@theoj.org", "email us" %>.
+          Furthermore, you cannot submit the replication of your own research, nor the research of your close collaborators. We believe such restrictions will favor the cross-fertilization of research and the spread of knowledge.
         </p>
-        <% unless social_media_links.empty? %>
-          <p>
-            You can also find <%= setting(:abbreviation) %> at
-            <%= social_media_links.join(" and ").html_safe %>
-          </p>
-        <% end %>
-      </div>
-
-      <div class="generic-content-item" id="code_of_conduct">
-        <h1>Code of Conduct</h1>
-
-        <p>Although spaces may feel informal at times, we want to remind authors and reviewers (and anyone else) that
-          this is a professional space. As such, the <%= setting(:abbreviation) %> community adheres to a code of
-          conduct adapted from the
-          <%= link_to "Contributor Covenant", "http://contributor-covenant.org", target: "_blank" %> code of conduct.
-        </p>
-
-        <p>Authors and reviewers will be required to confirm they have read our
-          <%= link_to "code of conduct", "https://github.com/#{ setting(:github) }/blob/master/CODE_OF_CONDUCT.md", target: "_blank" %>,
-          and are expected to adhere to it in all <%= setting(:abbreviation) %> spaces and associated interactions.</p>
-      </div>
-
-      <div class="generic-content-item" id="ethics">
-        <h1>Ethics Guidelines</h1>
-        <p>We also want to remind authors and reviewers (and anyone else) that we expect and require ethical behavior. Some examples are:
-          <ul>
-            <li>All authors are obliged to provide retractions or corrections of any mistakes of which they become aware.</li>
-            <li>Plagiarism (e.g., violation of another author's copyright), for both software and papers, is not allowed.</li>
-            <li>Self-plagiarism (repeated publication of the same work) is not allowed.</li>
-            <li>Author lists must be correct and complete. All listed authors must have made a contribution to the work, and all significant contributors should be included in the author list.</li>
-            <li>Reviews should be accurate and non-fraudulent. Examples of concerns are: Authors should not suggest reviewers who are not real people or have conflicts (see <a href="https://joss.readthedocs.io/en/latest/reviewer_guidelines.html#joss-conflict-of-interest-policy" target="_blank">conflict of interest policy</a> for details). Reviewers and editors must disclose conflicts. Bribes for authors, reviewers, editors are not permitted.</li>
-          </ul>
-        </p>
-
-        <b>Allegations of misconduct</b>
-        <p>Allegations of research misconduct associated with a <%= setting(:abbreviation) %> submission (either during review, or post-publication) are handled by the Open Journals ethics team. Reports should be sent privately to <%= mail_to "admin@theoj.org", "our editorial team" %> at which point the report will be triaged by the Open Journals ethics officer to determine the nature and severity of the case. Options available to the Open Journals ethics officer range from recommending no action to instigating a full investigation by the Open Journals ethics team which may result in researchers' institutions and funders being notified and the <%= setting(:abbreviation) %> being retracted.</p>
-
-        <p>Although <%= setting(:abbreviation) %> is not yet a member of <%= link_to "COPE", "https://publicationethics.org" %> (application pending), our processes are modeled on the <%= link_to "COPE guideline proceedures for ethics complaints", "https://publicationethics.org/files/publication-ethics-editorial-office-cope-flowchart.pdf" %>.</p>
-
-        <b>Complaints process</b>
-        <p>Complaints about the conduct or decision making of the <%= setting(:abbreviation) %> editorial team can be sent to the <%= mail_to "admin@theoj.org", "Open Journals governance team" %>.</p>
-
-        <h2 id="ethics-and-malpractice"><%= setting(:abbreviation) %> Publication Ethics and Malpractice Statement</h2>
-        <b>Editorial Board</b>
-        <ul>
-          <li>The <%= setting(:abbreviation) %> editorial board's members are recognized experts in the field. The full names and affiliations of the members are provided on the journal’s website (see <a href="<%= setting(:url) %>/about#editorial_board">editorial board</a>). The individual editors' contact information are provided on that site, via their GitHub pages, and general contact information for the editorial office also on the <a href="<%= setting(:url) %>/about#contact">journal’s website</a>.</li>
-        </ul>
-
-        <b>Authors and Authors responsibilities</b>
-        <ul>
-          <li><%= setting(:abbreviation) %> does not charge any fees for manuscript processing and/or publishing materials, as is stated on the <a href="<%= setting(:url) %>/about#costs">journal's website</a>.</li>
-
-          <li>Authors are obliged to participate in peer review process, as described in <a href="https://joss.readthedocs.io/en/latest/submitting.html#the-review-process">submission guidelines</a>.</li>
-
-          <li>All authors have significantly contributed to the research. The submitting author is required to be a <a href="https://joss.readthedocs.io/en/latest/submitting.html#submission-requirements">major contributor to the software</a> they are submitting and the review process includes a check that <em><a href="https://joss.readthedocs.io/en/latest/review_criteria.html#authorship">‘the full list of paper authors seems appropriate and complete?’</a></em>.</li>
-
-          <li>All authors are obliged to provide retractions or corrections of mistakes (see <a href="<%= setting(:url) %>/about#ethics">ethics</a> and <a href="https://joss.readthedocs.io/en/latest/submitting.html#what-should-my-paper-contain">what should my paper contain?</a>).</li>
-
-          <li><%= setting(:abbreviation) %> papers are required to have a <a href="https://joss.readthedocs.io/en/latest/submitting.html#what-should-my-paper-contain">list of references</a>, and <a href="https://joss.readthedocs.io/en/latest/submitting.html#what-should-my-paper-contain">financial support</a>.</li>
-
-          <li>Forbidden to publish same research in more than one journal (see <a href="<%= setting(:url) %>/about#ethics">ethics</a>).</li>
-        </ul>
-
-        <b>Peer-review process</b>
-        <ul>
-          <li>All of <%= setting(:abbreviation) %>'s content is subjected to peer-review (see <a href="http://joss.theoj.org/about">about</a> and <a href="https://joss.readthedocs.io/en/latest/index.html">docs</a>).</li>
-
-          <li><%= setting(:abbreviation) %> peer-review is defined as obtaining advice on individual manuscripts from reviewers <a href="https://joss.readthedocs.io/en/latest/editing.html#finding-reviewers">expert in the field</a>. This advice is public, and is given to both the editor(s) and the author(s), with the aim of pointing out issues the reviewers believe are <a href="https://joss.readthedocs.io/en/latest/reviewer_guidelines.html#guiding-principles">insufficiently addressed for publication</a>.</li>
-
-          <li>The <%= setting(:abbreviation) %> review process is clearly described on the <a href="https://joss.readthedocs.io/en/latest/reviewer_guidelines.html">journal’s website</a>.</li>
-
-          <li>Judgments should be <a href="https://joss.readthedocs.io/en/latest/reviewer_guidelines.html#guiding-principles">objective</a>.</li>
-
-          <li><%= setting(:abbreviation) %> reviewers should ideally have no conflict of interest. In practice, this is not always possible. If a reviewer has a conflict of interest, it must be declared and recorded, and the editors may <a href="https://joss.readthedocs.io/en/latest/reviewer_guidelines.html#joss-conflict-of-interest-policy">choose to waive</a> it if this is in the best interest of the review process.</li>
-
-          <li>Reviewers should point out <a href="https://joss.readthedocs.io/en/latest/review_criteria.html#an-important-note-about-novel-software-and-citations-of-relevant-work">relevant published work</a> which is not yet cited.</li>
-
-          <li><%= setting(:abbreviation) %> reviews are public and non-anonymous while in progress and post-review, as they take place via GitHub issues in a public repository.</li>
-        </ul>
-
-        <b>Publication Ethics</b>
-        <ul>
-          <li>All authors are obliged to provide retractions or corrections of any mistakes of which they become aware.</li>
-          <li>Plagiarism (e.g., violation of another author's copyright), for both software and papers, is not allowed.</li>
-          <li>Self-plagiarism (repeated publication of the same work) is not allowed.</li>
-          <li>Author lists must be correct and complete. All listed authors must have made a contribution to the work, and all significant contributors should be included in the author list.</li>
-          <li>Reviews should be accurate and non-fraudulent. Examples of concerns are: Authors should not suggest reviewers who are not real people or have conflicts. Reviewers and editors must disclose conflicts. Bribes for authors, reviewers, editors are not permitted.</li>
-          <li>Minor fixes are processed by the Editors in Chief (EiCs), and are publicly handled based on requests from the original authors (managed in the GitHub review linked from the paper).</li>
-          <li>Major corrections will be reviewed by the EiC and ethics team. If accepted, the paper will be re-published with an editorial note on the GitHub review (linked from the paper page).</li>
-          <li>Retractions: EiC team and the ethics team review. If we deem that a retraction is warranted, we will update the paper and leave a retraction notice (<a href="https://joss.theoj.org/papers/c44313ada36f12eebbaff10eb0888071">see an example retraction for the linked paper</a>)</li>
-          </ul>
-
-        <b>Copyright and Access</b>
-        <ul>
-          <li><%= setting(:abbreviation) %> copyright and licensing information is clearly described on the <a href="<%= setting(:url) %>/about#content_license">journal’s website</a>.</li>
-          <li>The journal and all individual articles are freely available to all readers.</li>
-        </ul>
-
-        <b>Archiving</b>
-        <ul>
-          <li><%= setting(:abbreviation) %> articles, metadata, and reviews are archived with <a href="https://www.portico.org/">Portico</a>.</li>
-        </ul>
-
-        <b>Ownership and management</b>
-        <ul>
-          <li>Information about the ownership and/or management of a journal is clearly indicated on the journal’s website (see <a href="http://www.theoj.org">http://www.theoj.org</a>).</li>
-          <li>JOSS and the <a href="http://www.theoj.org">Open Journals</a> do not use organizational names that would mislead potential authors and editors about the nature of the journal’s owner.</li>
-        </ul>
-
-        <b>Website</b>
-        <ul>
-          <li>
-            The JOSS website (see <a href="<%= setting(:url) %>"><%= setting(:url) %></a> and <a href="<%= setting(:url) %>/about"><%= setting(:url) %>/about</a>), including the text that it contains, demonstrates that care has been taken to ensure high ethical and professional standards.
-          </li>
-        </ul>
-
-        <b>Publishing schedule</b>
-        <ul>
-          <li><%= setting(:abbreviation) %> immediately publishes accepted articles; it is not a serial publication.</li>
-        </ul>
-
-        <b>Name of journal</b>
-        <ul>
-          <li>
-            As far as we know, the journal name (<%= setting(:name) %> (<%= setting(:abbreviation) %>)) is unique and not one that is easily confused with another journal or that might mislead potential authors and readers about the journal’s origin or association with other journals.
-          </li>
-        </ul>
-      </div>
-
-      <div class="generic-content-item" id="costs">
-        <h1>Cost and Sustainability Model</h1>
-        <p><%= setting(:name) %> is an open access journal <em>committed to running at minimal costs, with zero publication fees (<a href="https://en.wikipedia.org/wiki/Article_processing_charge">article processing charges</a>) or subscription fees</em>.</p>
-
-        <p>Under the NumFOCUS nonprofit umbrella, <%= setting(:abbreviation) %> is now eligible to seek grants for sustaining its future. With an entirely volunteer team, <%= setting(:abbreviation) %> is seeking to sustain its operations via <%= link_to 'donations', "https://numfocus.org/donate-to-joss", target: "_blank" %> and grants, keeping its low cost of operation and free service for authors.</p>
-
-        <p>In the spirit of transparency, below is an outline of our current running costs:</p>
-
-        <ul>
-          <li>Annual Crossref <a href="http://www.crossref.org/02publishers/20pub_fees.html">membership</a>: $275 / year
-          </li>
-          <li>Annual Portico <a href="https://www.portico.org/join/how-publishers-can-join/">membership</a>: $250 / year
-          </li>
-          <li><%= setting(:abbreviation) %> paper DOIs: $1 / accepted paper</li>
-          <li><%= setting(:abbreviation) %> website hosting (Heroku): $19 / month</li>
-        </ul>
-
-        <p>Assuming a publication rate of 200 papers per year this works out at ~$4.75 per paper ((19*12) + 200 + 275 + 250) / 200.</p>
-
-        <p>A more detailed analysis of our running costs is available <a href="http://blog.joss.theoj.org/2019/06/cost-models-for-running-an-online-open-journal" target="_blank">on our blog</a>.</p>
-
-        <h4>Income</h4>
-
-        <p>JOSS has an experimental collaboration with <%= link_to "AAS publishing", "https://blog.joss.theoj.org/2018/12/a-new-collaboration-with-aas-publishing" %> where authors submitting to one of the AAS journals can also publish a companion software paper in JOSS, thereby receiving a review of their software. For this service, JOSS receives a small donation from AAS publishing. In 2019, JOSS received $200 as a result of this collaboration.</p>
-
-        <h4>Donate</h4>
-
-        <p>Donations are one way for JOSS to offset our costs: <%= link_to image_tag("https://img.shields.io/badge/Donate-to%20JOSS-brightgreen.svg"), "https://numfocus.org/donate-to-joss", target: "_blank" %></p>
-      </div>
-
-      <div class="generic-content-item" id="content_license">
-        <h1>Content Licensing & Open Access</h1>
         <p>
-          <%= setting(:abbreviation) %> is a <a href="https://en.wikipedia.org/wiki/Open_access#Diamond/platinum_OA" target="_blank">diamond/platinum open access</a> journal. Copyright of <%= setting(:abbreviation) %> papers is
-          retained by submitting authors and accepted papers are subject to a <a rel="license"
-            href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International
-            License</a>.</p>
-        <p>Any code snippets included in <%= setting(:abbreviation) %> papers are subject to the <a
-            href="https://opensource.org/licenses/MIT" target="_blank">MIT license</a> regardless of the license of the
-          submitted software package under review.</p>
-        <p>Any use of the JOSS logo is licensed CC BY 4.0. See the <code><a href="https://github.com/openjournals/digital-assets/tree/master/joss/logo" target="_blank">joss/logo</a></code> directory in the <a href="https://github.com/openjournals/digital-assets" target="_blank">digital-assets</a> repository for more information about it.</p>
-        <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>.
+          ReScience C accepts negative results as well, meaning here a failure to replicate the original results. The authors of the failed replication are expected to document their claim of failure, and to have attempted to contact the authors of the original article.
+        </p>
+
+        <h2>Article Scope</h2>
+        <p>
+        The accompanying article should help the reader ascertain if the replication was successful and as such, the main focus should be on the replicated results and on any obstacles encountered during the replication.
+        </p>
+        <p>
+        In many cases it can be useful to include high-level summaries of the original model or of your source code. Your goal should be to make the article sufficiently self-contained, but not to repeat all aspects of the original article or your documentation. Which amount of detail is sufficient may vary from case to case and is ultimately up to the reviewers to judge. If a reader has to be familiar with the original article in order to understand your explanations, consider that some readers may be unable to access it if it is behind a paywall.
+        </p>
+
+        <h2>Open Access</h2>
+        <p>
+        ReScience C applies the Creative Commons Attribution (CC BY) license to all works it publishes. Under the CC BY license, authors retain ownership of the copyright for their article, but authors allow anyone to download, reuse, reprint, modify, distribute, and/or copy articles in ReScience C journal, so long as the original authors and source are cited. No permission is required from the authors or the publishers.
+        </p>
+      </div>
+
+      <div id="reviewing" class="generic-content-item">
+        <h1>The reviewing process</h1>
+        <p>
+          A submission takes the form of an issue. If you’re unfamiliar with GitHub, do not hesitate to ask advices and informations to the editor in charge of editing the submission. Reviewers unfamiliar with git should have a look at <a href="http://git-lectures.github.io" target="_blank">http://git-lectures.github.io</a>.
+        </p>
+        <p>
+          To review a submission, you’ll first have to clone the author’s repository onto your desktop environment and each time an author update the manuscript or code to get reviewer’s comment into account, you’ll have to update your local copy using the <i>git pull command</i>.
+        </p>
+
+        <h2>Reviewer guidelines</h2>
+        <p><b>Successful replications</b></p>
+        <p>
+          Most articles in ReScience C report a successful replication of the results (figures, tables, …) of previously published research work. A full replication covers all the results of the original work, whereas a partial replication covers only a subset of the results.
+        </p>
+        <p>The main criteria for acceptance of a successful replication are:</p>
+        <ol>
+          <li>The actual replication of the research. The reviewer must evaluate the authors’ claims about a successful replication, applying the standards of the field.</li>
+          <li>Reproducibility of the replication. The reviewers must be able to run the proposed implementation on their computer, and obtain the same results as the authors with the limits of the state of the art of the field.</li>
+          <li>Clarity of the code and the instructions for running it. Uncommented or obfuscated code is as bad as no code at all.</li>
+          <li>Clarity and completeness of the accompanying article, in which the authors should clearly state why they think they have replicated the paper (same figures, same graphics, same behavior, etc.) and explain any obstacles they have encountered during the replication work. The reviewers should also consider if the article is sufficiently self-contained.</li>
+        </ol>
+        <p>
+          The primary goal of the review is not to decide whether to accept or reject a submission, but to help the authors improve their work until it meets the ReScience C quality standards. Since ReScience C targets replication of already published research, there is no need to judge the relevance or novelty of the work. Every replication that meets the criteria listed above is welcome in ReScience C. Rejection remains of course a possibility, in the case that the authors are not able or willing to improve their submission as deemed necessary by the reviewers.
+        </p>
+        <p>
+          When evaluating the criteria for acceptance, reviewers need to apply the standards of their field of research. There are no absolute criteria for two results/figures being equal, so both the success and the reproducibility of the replication must be judged according to the degree of equality that can be achieved given the state of the art of the field. The clarity of the code and instructions must also be judged in the light of the conventions of the field. As a general goal, any competent researcher in the field should understand the paper and be able to understand and run the code. The use of software packages that are mainstream in the field is encouraged, but not strictly required. The less well-known a software package is, the more explanation authors should provide concerning its capabilities and use.
+        </p>
+
+        <p><b>Failed replications</b></p>
+        <p>
+          A replication attempt can lead to the finding that the results of the original paper cannot be reproduced, suggesting a critical mistake or omission in the original work that cannot be fixed. The failure can concern some or all of the results. ReScience C accepts reports on replication failures, but requires a particularly careful examination by the reviewers. The authors must describe in detail why they believe that the original work is mistaken, and the reviewers must be convinced by the reasoning offered by the authors.
+        </p>
+        <p>
+          Authors who are confronted with replication failure are strongly encouraged to contact the authors of the original work and try to explore the causes of the replication failure in collaboration with them. This is, however, not a requirement for publication in ReScience C.
+        </p>
+      </div>
+
+      <div id="editing" class="generic-content-item">
+        <h1>The editing process</h1>
+        <p>
+          The role of a scientific editor is to manage a submission from start to end, i.e. from the initial acknowledgment request by the editor-in-chief to the final publication. As an editor, your goal is to help authors improve their submission in order to meet the journal’s quality standards and to ensure that anyone can re-use the published code. Depending on the specific domain, an editor might request the article to follow best practices of the domain.
+        </p>
+
+        <h2>Editor guidelines</h2>
+        <ul>
+          <li>When a <a href="https://github.com/rescience/submissions/issues" target="_blank">new submission</a> is made (i.e. a new issue has been opened), you can assign yourself in order to be the editor or you can accept an invitation to edit the submission.</li>
+          <li>Once you’ve accepted, you can either <b>reject</b> the submission and close the issue (you’ll have to motivate such decision) or <b>accept</b> the submission. You’ll then need to find and invite at least two reviewers (from within the same issue)</li>
+          <li>Once you’ve found the two reviewers, you can start the review.</li>
+          <li>During the review, reviewers are free to interact with the authors to ask for clarification or change in any file that is part of the submission.</li>
+          <li>The main criterion for acceptance is either:
+            <ul>
+              <li>Replication of the original research with a clear statement by the authors explaining why they think they have replicated the paper (same figures, same graphics, same behavior, etc.).</li>
+              <li>Non-replication of the original research with a clear statement by the authors explaining why they believe that it cannot be replicated.</li>
+              <li>Source code without any accompanying article is also a criterion for rejection since we’re not human compilers (well not all of us at least).</li>
+            </ul>
+          </li>
+          <li>Don’t forget to check that there is a license in the code repository. Authors can choose whatever open license they prefer (see the <a href="https://www.debian.org/social_contract#guidelines" target="_blank">Debian Free Software Guidelines</a>) but they need to choose one.</li>
+          <li>If both reviewers agree, the paper can be accepted.</li>
+        </ul>
+      </div>
+
+      <div id="publication" class="generic-content-item">
+        <h1>The publication process</h1>
+        <p>
+          The publication is now almost automatic but still requires some manual steps that are given in the <a href="https://github.com/rescience/articles" target="_blank">README</a> of the articles repository.
+        </p>
+        <p>
+          After publication, you can try to contact the editor and the authors of the original article to tell them about the successful (or unsuccessful) replication of their work.
+        </p>
+        <p>
+          You can also tweet about the new paper, with CC to @ReScienceEds.
+        </p>
+        <p>
+          Finally, you can close the issue.
+        </p>
+      </div>
+
+      <div id="editorial-board" class="generic-content-item">
+        <%= render partial: "content/about/editorial_board" %>
+      </div>
+
+      <div id="faq" class="generic-content-item">
+        <%= render partial: "content/about/faq" %>
       </div>
     </div>
-  <div class="col-lg-3 about-nav">
-    <div class="sub-nav">
-      <nav class="menu" id="subnav">
-        <a class="menu-item selected" href="#about">About</a>
-        <a class="menu-item" href="#submitting">Submission scope</a>
-        <a class="menu-item" href="#editorial_board">Editorial Board</a>
-        <a class="menu-item" href="#topic_editors">Topic Editors</a>
-        <a class="menu-item" href="#editors_emeritus">Editors Emeritus</a>
-        <a class="menu-item" href="#contact">Contact <%= setting(:abbreviation) %></a>
-        <a class="menu-item" href="#code_of_conduct">Code of Conduct</a>
-        <a class="menu-item" href="#ethics">Ethics Guidelines</a>
-        <a class="menu-item" href="#costs">Cost and Sustainability Model</a>
-        <a class="menu-item" href="#content_license">Content Licensing &amp; Open Access</a>
-      </nav>
+    <div class="col-lg-3 about-nav">
+      <div class="sub-nav">
+        <nav class="menu" id="subnav">
+          <a class="menu-item selected" href="#about">About</a>
+          <a class="menu-item" href="#write">Write a submission</a>
+          <a class="menu-item" href="#reviewing">The reviewing process</a>
+          <a class="menu-item" href="#editing">The editing process</a>
+          <a class="menu-item" href="#publication">The publication process</a>
+          <a class="menu-item" href="#editorial-board">Editorial Board</a>
+          <a class="menu-item" href="#editors-in-chief">Editors-in-Chief</a>
+          <a class="menu-item" href="#associate-editors">Associate Editors</a>
+          <a class="menu-item" href="#reviewers">Reviewers</a>
+        </nav>
 
-      <a class="menu-btn" href="https://joss.readthedocs.io/en/latest/submitting.html">Author information</a>
-      <%= link_to "🎉 Volunteer to review".html_safe, setting(:reviewers_signup_url), class: "menu-btn" %>
-      <a class="menu-btn" href="https://joss.readthedocs.io/en/latest/reviewer_guidelines.html">Reviewer guidelines</a>
-      <%= link_to "✨ Donate to #{setting(:abbreviation)}&nbsp;&nbsp;✨".html_safe, "https://numfocus.org/donate-to-joss", class: "menu-btn", target: "_blank" %>
+        <a class="menu-btn" href="#write">Author information</a>
+        <a class="menu-btn" href="#reviewing">Reviewer guidelines</a>
+        <a class="menu-btn" href="#faq">Frequently Asked Questions</a>
       </div>
     </div>
   </div>
