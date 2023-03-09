@@ -6,13 +6,13 @@ module PapersHelper
   end
 
   def paper_kind(paper)
-    case paper.submission_kind
-    when "new"
-      "New submission"
-    when "resubmission"
-      "Resubmission"
-    when "new version"
-      "New version"
+  case paper.submission_kind
+    when "replication"
+      "Replication"
+    when "reproduction"
+      "Reproduction"
+    when "letter"
+      "Letter"
     else
       "Unknown"
     end

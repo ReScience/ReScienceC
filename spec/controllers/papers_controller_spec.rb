@@ -129,7 +129,7 @@ describe PapersController, type: :controller do
                        repository_url: "https://github.com/openjournals/joss",
                        git_branch: "joss-paper",
                        software_version: "v1.0.1",
-                       submission_kind: "new",
+                       submission_kind: "replication",
                        suggested_subject: "Astronomy & astrophysics",
                        track_id: create(:track).id
                      }

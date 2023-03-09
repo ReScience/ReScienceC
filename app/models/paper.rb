@@ -88,9 +88,9 @@ class Paper < ApplicationRecord
   ].freeze
 
   SUBMISSION_KINDS = [
-    "new",
-    "resubmission",
-    "new version"
+    "replication",
+    "reproduction",
+    "letter"
   ]
 
   # Languages we don't show in the UI

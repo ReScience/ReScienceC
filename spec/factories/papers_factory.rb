@@ -6,7 +6,7 @@ FactoryBot.define do
     archive_doi       { 'https://doi.org/10.0001/zenodo.12345' }
     software_version  { 'v1.0.0' }
     submitting_author { create(:user) }
-    submission_kind   { 'new' }
+    submission_kind   { 'replication' }
     track             { create(:track) }
 
     created_at  { Time.now }
@@ -34,8 +34,8 @@ FactoryBot.define do
       state { 'submitted' }
     end
 
-    factory :resubmission_paper do
-      submission_kind   { 'resubmission' }
+    factory :reproduction_paper do
+      submission_kind   { 'reproduction' }
     end
 
     factory :rejected_paper do

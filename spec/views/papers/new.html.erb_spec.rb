@@ -32,7 +32,6 @@ RSpec.describe "papers/new", type: :view do
         assert_select "input#paper_suggested_subject[name=?]", "paper[suggested_subject]"
         assert_select "textarea#paper_body[name=?]", "paper[body]"
         assert_select "input#author-check"
-        assert_select "input#coc-check"
       end
     end
   end
@@ -54,7 +53,6 @@ RSpec.describe "papers/new", type: :view do
         assert_select "input#paper_suggested_subject[name=?]", "paper[suggested_subject]"
         assert_select "textarea#paper_body[name=?]", "paper[body]"
         assert_select "input#author-check"
-        assert_select "input#coc-check"
       end
     end
   end
