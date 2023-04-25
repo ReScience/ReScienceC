@@ -1,8 +1,8 @@
 # ReScience C
 
-[![Build Status](https://github.com/xuanxu/ReScienceC/actions/workflows/tests.yml/badge.svg)](https://github.com/xuanxu/ReScienceC/actions/workflows/tests.yml)
+[![Build Status](https://github.com/ReScience/ReScienceC/actions/workflows/tests.yml/badge.svg)](https://github.com/ReScience/ReScienceC/actions/workflows/tests.yml)
 
-[ReScience C](https://rescience.github.io/) is a platinum open-access peer-reviewed journal that targets computational research and encourages the explicit replication of already published research, promoting new and open-source implementations in order to ensure that the original research is reproducible.
+[ReScience C](https://rescience.theoj.org/) is a platinum open-access peer-reviewed journal that targets computational research and encourages the explicit replication of already published research, promoting new and open-source implementations in order to ensure that the original research is reproducible.
 
 ReScience C is collaborative and open by design.
 
