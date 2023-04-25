@@ -195,8 +195,8 @@ describe Paper do
     it "should know how to generate a PDF URL for Google Scholar" do
       paper = create(:accepted_paper)
 
-      expect(paper.seo_url).to eq('http://resciencec.org/papers/10.21105/resciencec.00000')
-      expect(paper.seo_pdf_url).to eq('http://resciencec.org/papers/10.21105/resciencec.00000.pdf')
+      expect(paper.seo_url).to eq('https://resciencec.theoj.org/papers/10.21105/resciencec.00000')
+      expect(paper.seo_pdf_url).to eq('https://resciencec.theoj.org/papers/10.21105/resciencec.00000.pdf')
     end
   end
 
@@ -204,8 +204,8 @@ describe Paper do
     it "should know how to generate a PDF URL for Google Scholar" do
       paper = create(:under_review_paper)
 
-      expect(paper.seo_url).to eq('http://resciencec.org/papers/48d24b0158528e85ac7706aecd8cddc4')
-      expect(paper.seo_pdf_url).to eq('http://resciencec.org/papers/48d24b0158528e85ac7706aecd8cddc4.pdf')
+      expect(paper.seo_url).to eq('https://resciencec.theoj.org/papers/48d24b0158528e85ac7706aecd8cddc4')
+      expect(paper.seo_pdf_url).to eq('https://resciencec.theoj.org/papers/48d24b0158528e85ac7706aecd8cddc4.pdf')
     end
   end
 
