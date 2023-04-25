@@ -7,8 +7,8 @@ logo_url: "/logo_large.jpg"
 url: "https://resciencec.org"
 editor_email: "admin@resciencec.org"
 noreply_email: "noreply@resciencec.org"
-twitter: "@ReScienceEds"
-mastodon_url: "https://fosstodon.org/@ReScienceC"
+twitter: "@RescienceC"
+mastodon_url: "https://fosstodon.org/@RescienceC"
 #google_analytics: ""
 github: "xuanxu/rescience"
 reviews: "aliadalabs/resciencec-reviews-testing"
@@ -17,6 +17,7 @@ papers_html_url: "https://rescience.github.io/read/"
 reviewers_signup_url: "https://github.com/ReScience/ReScience/issues/27"
 product: "software" # the *thing* being submitted for review
 reviewers: "http://rescience.github.io/board/#reviewers"
+
 submission_enquiry: |-
   **Project repository URL:** INSERT YOUR REPOSITORY LINK HERE
 

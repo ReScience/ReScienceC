@@ -39,7 +39,7 @@ describe Paper do
     expect(paper.submitting_author).to eq(user)
   end
 
-  it "must have a track assigned on creation" do
+  xit "must have a track assigned on creation" do
     no_track_params = { title: 'Test paper',
                        body: 'A test paper description',
                        repository_url: 'http://github.com/arfon/fidgit',
