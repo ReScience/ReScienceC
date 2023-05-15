@@ -40,7 +40,7 @@
   <div class="row">
     <div class="col">
       <%= f.label "Type of submission" %>
-      <%= f.select(:submission_kind, {'Replication' => 'replication', 'Reproduction' => 'reproduction', 'Letter' => 'letter'}, {include_blank: false, prompt: "Select one and explain choice below"}, class: "form-control", style: "margin-right: 12px;") %>
+      <%= f.select(:submission_kind, {'Replication' => 'replication', 'Reproduction' => 'reproduction', 'Editorial' => 'editorial', 'Letter' => 'letter'}, {include_blank: false, prompt: "Select one and explain choice below"}, class: "form-control", style: "margin-right: 12px;") %>
     </div>
     <div class="col" data-controller="autocomplete" data-autocomplete-url-value="<%= search_subjects_path %>">
       <%= f.label "Main subject of the paper" %>

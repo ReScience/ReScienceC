@@ -90,6 +90,7 @@ class Paper < ApplicationRecord
   SUBMISSION_KINDS = [
     "replication",
     "reproduction",
+    "editorial",
     "letter"
   ]
 
