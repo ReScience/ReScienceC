@@ -15,7 +15,7 @@ reviews: "aliadalabs/resciencec-reviews-testing"
 papers_repo: "aliadalabs/resciencec-papers-testing"
 papers_html_url: "https://resciencec.theoj.org"
 reviewers_signup_url: "https://github.com/ReScience/ReScience/issues/27"
-product: "software" # the *thing* being submitted for review
+product: "paper" # the *thing* being submitted for review
 reviewers: "http://resciencec.theoj.org/about#reviewers"
 submission_enquiry: |-
   **Project repository URL:** INSERT YOUR REPOSITORY LINK HERE
