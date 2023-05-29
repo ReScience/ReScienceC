@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '3.2.1'
+ruby '3.2.2'
 
 gem 'aasm', '~> 5.5.0'
 gem 'chartkick'
@@ -18,7 +18,7 @@ gem 'octokit', '~> 6.0'
 gem 'pdf-reader', '~> 2.11.0'
 gem 'pg', '~> 1.4.6'
 gem 'will_paginate', '~> 3.3.1'
-gem 'rails', '7.0.4.3'
+gem 'rails', '7.0.5'
 gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
