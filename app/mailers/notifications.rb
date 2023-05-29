@@ -2,14 +2,10 @@ class Notifications < ApplicationMailer
   EDITOR_EMAILS = [Rails.application.settings["editor_email"]]
 
   def submission_email(paper)
-    aeic_emails = paper.track.aeic_emails if paper.track.present?
+    aeic_emails = paper.track.aeic_emails
     @url  = "#{Rails.application.settings["url"]}/papers/#{paper.sha}"
     @paper = paper
-    if aeic_emails.present?
-      mail(to: aeic_emails, cc: EDITOR_EMAILS, subject: "New submission: #{paper.title}")
-    else
-      mail(to: EDITOR_EMAILS, subject: "New submission: #{paper.title}")
-    end
+    mail(to: aeic_emails, cc: EDITOR_EMAILS, subject: "New submission: #{paper.title}")
   end
 
   def notify_new_aeic(paper, old_track, new_track)

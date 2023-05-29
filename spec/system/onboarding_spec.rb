@@ -273,7 +273,7 @@ feature "Onboarding" do
       end
     end
 
-    xscenario "Tracks are mandatory" do
+    scenario "Tracks are mandatory" do
       track = create(:track)
       data = { editor_first_name: "Eddie",
                editor_last_name: "Tor",

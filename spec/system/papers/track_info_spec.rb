@@ -1,6 +1,6 @@
 require "rails_helper"
 
-xfeature "Paper's track info" do
+feature "Paper's track info" do
 
   before do
     skip_paper_repo_url_check
