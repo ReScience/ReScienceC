@@ -8,159 +8,134 @@ class PapersController < ApplicationController
   before_action :require_aeic, only: %w(start_meta_review archive reject change_track)
 
   def recent
-    @papers = Paper.visible.paginate(
-                page: params[:page],
-                per_page: 10
-              )
+    @pagy, @papers = pagy(Paper.visible, items: 10)
 
     @selected = "recent"
 
     respond_to do |format|
       format.atom { render template: 'papers/index' }
-      format.json { render json: @papers }
+      format.json { render template: 'papers/index' }
       format.html { render template: 'papers/index' }
     end
   end
 
   def index
-    @papers = Paper.public_everything.paginate(
-                page: params[:page],
-                per_page: 10
-              )
+    @pagy, @papers = pagy(Paper.public_everything, items: 10)
 
     @selected = "all"
 
     respond_to do |format|
       format.atom { render template: 'papers/index' }
-      format.json { render json: @papers }
+      format.json { render template: 'papers/index' }
       format.html { render template: 'papers/index' }
     end
   end
 
   def popular
     if params[:since]
-      @papers = Paper.unscoped.visible.since(params[:since]).order(accepted_at: :desc).paginate(
-                  page: params[:page],
-                  per_page: 10
-                )
+      @pagy, @papers = pagy(Paper.unscoped.visible.since(params[:since]).order(accepted_at: :desc), items: 10)
     else
-      @papers = Paper.unscoped.visible.order(accepted_at: :desc).paginate(
-                  page: params[:page],
-                  per_page: 10
-                )
+      @pagy, @papers = pagy(Paper.unscoped.visible.order(accepted_at: :desc), items: 10)
     end
-
 
     @selected = "popular"
 
     respond_to do |format|
       format.atom { render template: 'papers/index' }
-      format.json { render json: @papers }
+      format.json { render template: 'papers/index' }
       format.html { render template: 'papers/index' }
     end
   end
 
   def active
-    @papers = Paper.public_in_progress.paginate(
-                page: params[:page],
-                per_page: 10
-              )
+    @pagy, @papers = pagy(Paper.public_in_progress, items: 10)
 
     @selected = "active"
 
     respond_to do |format|
       format.atom { render template: 'papers/index' }
-      format.json { render json: @papers }
+      format.json { render template: 'papers/index' }
       format.html { render template: 'papers/index' }
     end
   end
 
   def search
-    @papers = Paper.none.page(1)
-    @term = "results for empty search"
-
-    if params['q']
+    if params['q'].present?
       @papers = Paper.search(params['q'], fields: [:authors, :title, :tags, :languages],
                   page: params[:page],
                   per_page: 10)
+      @pagy = Pagy.new_from_searchkick(@papers)
 
       @term = "search results for '#{params['q']}'"
+    else
+      @pagy, @papers = pagy(Paper.none)
+      @term = "results for empty search"
     end
 
     @filtering = true
 
     respond_to do |format|
       format.atom { render template: 'papers/index' }
-      format.json { render json: @papers }
+      format.json { render template: 'papers/index' }
       format.html { render template: 'papers/index' }
     end
   end
 
   def filter
-    @papers = Paper.none.page(1)
-    @term = "Empty search term"
     if params['language']
       @papers = Paper.search(params['language'], fields: [languages: :exact], order: { accepted_at: :desc },
                   page: params[:page],
-                  per_page: 10
-                )
+                  per_page: 10)
       @term = "in #{params['language']}"
-
     elsif params['author']
       @papers = Paper.search(params['author'], fields: [:authors], misspellings: false, order: { accepted_at: :desc },
                   page: params[:page],
-                  per_page: 10
-                )
+                  per_page: 10)
       @term = "by #{params['author']}"
-
     elsif params['editor']
       @papers = Paper.search(params['editor'], fields: [:editor], misspellings: false, order: { accepted_at: :desc },
                   page: params[:page],
-                  per_page: 10
-                )
+                  per_page: 10)
       @term = "edited by #{params['editor']}"
-
     elsif params['reviewer']
       @papers = Paper.search(params['reviewer'], fields: [:reviewers], misspellings: false, order: { accepted_at: :desc },
                   page: params[:page],
-                  per_page: 10
-                )
+                  per_page: 10)
       @term = "reviewed by #{params['reviewer']}"
-
     elsif params['tag']
       @papers = Paper.search(params['tag'], fields: [:tags, :title], order: { accepted_at: :desc },
                   page: params[:page],
-                  per_page: 10
-                )
+                  per_page: 10)
       @term = "#{params['tag']}"
-
     elsif params['issue']
       @papers = Paper.search(params['issue'], fields: [{issue: :exact}], order: { page: :desc },
                   page: params[:page],
-                  per_page: 10
-                )
+                  per_page: 10)
       @term = "in issue #{params['issue']}"
-
     elsif params['volume']
       @papers = Paper.search(params['volume'], fields: [{volume: :exact}], order: { page: :desc },
                   page: params[:page],
-                  per_page: 10
-                )
+                  per_page: 10)
       @term = "in volume #{params['volume']}"
-
     elsif params['year']
       @papers = Paper.search(params['year'], fields: [{year: :exact}], order: { page: :desc },
                   page: params[:page],
-                  per_page: 10
-                )
+                  per_page: 10)
       @term = "in #{params['year']}"
+    end
+
+    if @papers
+      @pagy = Pagy.new_from_searchkick(@papers)
+    else
+      @pagy, @papers = pagy(Paper.none)
+      @term = "Empty search term"
     end
 
     @filtering = true
 
     respond_to do |format|
       format.atom { render template: 'papers/index' }
-      format.json { render json: @papers }
+      format.json { render template: 'papers/index' }
       format.html { render template: 'papers/index' }
     end
   end
@@ -246,7 +221,18 @@ class PapersController < ApplicationController
     # Don't show the paper to anyone other than the submitting author or an
     # admin.
     if @paper.invisible?
-      head 404 and return unless can_see_hidden_paper?(@paper)
+      # Redirect to login if not logged in
+      if !current_user
+        flash[:notice] = "You need to log in before viewing this paper."
+        redirect_to root_path and return
+      end
+      
+      # Redirect to root if not an admin or the submitting author
+      # With notice that the paper is not visible
+      unless can_see_hidden_paper?(@paper)
+        flash[:notice] = "You don't have the permissions to view this paper."
+        redirect_to root_path and return
+      end
     end
 
     # The behaviour here for PDFs is to make it possible for the PDF to appear

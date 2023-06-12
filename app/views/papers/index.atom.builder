@@ -1,10 +1,10 @@
 atom_feed do |feed|
-  feed.link(rel: 'first', type: "application/atom+xml", href: url_for(format: 'atom', only_path: false))
   url_params = {}
-  [:since, :language].each {|p| url_params.merge!(p => params[p]) if params{p}}
-  feed.link(rel: 'next', type: "application/atom+xml", href: url_for(params: url_params, format: 'atom', page: @papers.current_page + 1, only_path: false)) unless @papers.current_page == @papers.total_pages
-  feed.link(rel: 'previous', type: "application/atom+xml", href: url_for(params: url_params, format: 'atom', page: @papers.current_page - 1, only_path: false)) unless @papers.current_page == 1
-  feed.link(rel: 'last', type: "application/atom+xml", href: url_for(params: url_params, format: 'atom', page: @papers.total_pages, only_path: false))
+  [:q, :since, :language].each {|p| url_params.merge!(p => params[p]) if params{p}}
+  feed.link(rel: 'first', type: "application/atom+xml", href: url_for(format: 'atom', only_path: false))
+  feed.link(rel: 'next', type: "application/atom+xml", href: url_for(params: url_params, format: 'atom', page: @pagy.next, only_path: false)) if @pagy.next
+  feed.link(rel: 'previous', type: "application/atom+xml", href: url_for(params: url_params, format: 'atom', page: @pagy.prev, only_path: false)) if @pagy.prev
+  feed.link(rel: 'last', type: "application/atom+xml", href: url_for(params: url_params, format: 'atom', page: @pagy.pages, only_path: false))
   feed.title(Rails.application.settings["name"])
   feed.updated(@papers[0].accepted_at || @papers[0].created_at) if @papers.length > 0
   feed.author do |author|
@@ -39,7 +39,7 @@ atom_feed do |feed|
             end
           end
           entry.doi(paper.doi)
-          entry.archive_doi(paper.clean_archive_doi)
+          entry.archive_doi(paper.archive_doi_url)
           entry.languages(paper.language_tags.join(', '))
           entry.pdf_url(paper.seo_pdf_url)
           entry.tags(paper.author_tags.join(', '))
