@@ -66,7 +66,7 @@ describe Paper do
                          repository_url: 'http://github.com/arfon/fidgit',
                          software_version: 'v1.0.0',
                          submitting_author: create(:user),
-                         submission_kind: 'new' }
+                         submission_kind: 'replication' }
 
       paper = Paper.create(no_track_params)
       expect(paper).to be_valid
