@@ -47,6 +47,12 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/toc', to: "toc#index", as: :toc_index
+  get '/toc/current-issue', to: "toc#current_issue", as: :toc_current_issue
+  get '/toc/year/:year', to: "toc#year", as: :toc_year
+  get '/toc/volume/:volume', to: "toc#volume", as: :toc_volume
+  get '/toc/issue/:issue', to: "toc#issue", as: :toc_issue
+
   get '/aeic/', to: "aeic_dashboard#index", as: "aeic_dashboard"
   get '/editors/lookup/:login', to: "editors#lookup"
   get '/papers/lookup/:id', to: "papers#lookup"
@@ -62,9 +68,9 @@ Rails.application.routes.draw do
 
   doi_prefix_name = Rails.application.settings[:abbreviation].downcase || "joss"
 
-  get '/papers/:doi/status.svg', to: "papers#status", format: "svg", constraints: { doi: /10.21105\/#{doi_prefix_name}\.\d{5}/}
-  get '/papers/:doi', to: "papers#show", constraints: { doi: /10.21105\/#{doi_prefix_name}\.\d{5}/}
-  get '/papers/:doi.:format', to: "papers#show", constraints: { doi: /10.21105\/#{doi_prefix_name}\.\d{5}/}
+  get '/papers/:doi/status.svg', to: "papers#status", format: "svg", constraints: { doi: /10.21105\/#{doi_prefix_name}\.\d{5}R?/}
+  get '/papers/:doi', to: "papers#show", constraints: { doi: /10.21105\/#{doi_prefix_name}\.\d{5}R?/}
+  get '/papers/:doi.:format', to: "papers#show", constraints: { doi: /10.21105\/#{doi_prefix_name}\.\d{5}R?/}
 
   get '/editor_profile', to: 'editors#profile', as: 'editor_profile'
   patch '/update_editor_profile', to: 'editors#update_profile', as: 'update_editor_profile'
@@ -89,6 +95,7 @@ Rails.application.routes.draw do
   post '/papers/api_editor_invite', to: 'dispatch#api_editor_invite'
   post '/papers/api_start_review', to: 'dispatch#api_start_review'
   post '/papers/api_deposit', to: 'dispatch#api_deposit'
+  post '/papers/api_retract', to: 'dispatch#api_retract'
   post '/papers/api_assign_editor', to: 'dispatch#api_assign_editor'
   post '/papers/api_update_paper_info', to: 'dispatch#api_update_paper_info'
   post '/papers/api_assign_reviewers', to: 'dispatch#api_assign_reviewers'

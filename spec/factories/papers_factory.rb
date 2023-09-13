@@ -9,8 +9,8 @@ FactoryBot.define do
     submission_kind   { 'replication' }
     track             { create(:track) }
 
-    created_at  { Time.now }
-    updated_at  { Time.now }
+    created_at { Time.now }
+    updated_at { Time.now }
 
     factory :paper_with_sha do
       sha { '48d24b0158528e85ac7706aecd8cddc4' }
@@ -35,7 +35,7 @@ FactoryBot.define do
     end
 
     factory :reproduction_paper do
-      submission_kind   { 'reproduction' }
+      submission_kind { 'reproduction' }
     end
 
     factory :rejected_paper do
@@ -47,7 +47,7 @@ FactoryBot.define do
       state { 'retracted' }
       accepted_at { Time.now }
       review_issue_id { 0 }
-      doi { '10.21105/resciencec.00000' }
+      sequence(:doi) {|n| "10.21105/resciencec.00000.4000#{n}" }
     end
 
     factory :submitted_paper_with_sha do

@@ -7,16 +7,18 @@ logo_url: "/logo_large.jpg"
 url: "https://resciencec.theoj.org"
 editor_email: "editor@resciencec.theoj.org"
 noreply_email: "admin@theoj.org"
+launch_date: "2016-05-05"
 twitter: "@ReScienceEds"
 mastodon_url: "https://fosstodon.org/@RescienceC"
 google_analytics: ""
 github: "ReScience/ReScienceC"
-reviews: "aliadalabs/resciencec-reviews-testing"
-papers_repo: "aliadalabs/resciencec-papers-testing"
-papers_html_url: "https://resciencec.theoj.org"
+reviews: "ReScience/ReScienceC-reviews"
+papers_repo: "ReScience/ReScienceC-papers"
+papers_html_url: "https://rescience.github.io/ReScienceC-papers"
+reviewers_url: ""
 reviewers_signup_url: "https://github.com/ReScience/ReScience/issues/27"
+reviewers_lookup_url: "http://resciencec.theoj.org/about#reviewers"
 product: "paper" # the *thing* being submitted for review
-reviewers: "http://resciencec.theoj.org/about#reviewers"
 submission_enquiry: |-
   **Project repository URL:** INSERT YOUR REPOSITORY LINK HERE
 

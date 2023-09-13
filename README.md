@@ -6,6 +6,19 @@
 
 ReScience C is collaborative and open by design.
 
+## The site
+
+The ReScience C submission tool is hosted at https://resciencec.theoj.org
+
+## ReScience C Reviews
+
+If you're looking for the ReScience C reviews repository head over here: https://github.com/ReScience/ReScienceC-reviews/issues
+
+## Code of Conduct
+
+In order to have a more open and welcoming community, ReScience C adheres to a code of conduct adapted from the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+
 ## Contributing
 
 1. Fork it
