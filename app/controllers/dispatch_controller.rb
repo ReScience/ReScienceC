@@ -167,7 +167,7 @@ class DispatchController < ApplicationController
       retraction_paper.software_version = paper.software_version
       retraction_paper.track_id = paper.track_id
       retraction_paper.citation_string = params[:citation_string]
-      retraction_paper.submission_kind = "new"
+      retraction_paper.submission_kind = "replication"
       retraction_paper.state = "accepted"
       retraction_paper.metadata = metadata
       retraction_paper.accepted_at = Time.now
