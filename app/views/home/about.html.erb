@@ -18,7 +18,7 @@
         <%= render partial: "content/about/general" %>
       </div>
 
-      <div id="write" class="generic-content-item">
+      <div id="submission-process" class="generic-content-item">
         <h1>Overview of the submission process</h1>
         <p>
           The ReScience C editorial board unites scientists who are committed to the open source community. Each editorial board member is specialised in a specific domain of science and is proficient in several programming languages and/or environments. Our aim is to provide all authors with an efficient, constructive and public editorial process.
@@ -26,22 +26,6 @@
         <p>
           Submitted entries are first considered by a member of the editorial board, who may decide to reject the submission (mainly because it has already been replicated and is publicly available), or assign it to two reviewers for further review and tests. The reviewers evaluate the code and the accompanying material in continuous interaction with the authors through the PR discussion section. If both reviewers managed to run the code and obtain the same results as the ones advertised in the accompanying material, and if they consider that these results are a replication of the original work, the submission is accepted. If any of the two reviewers cannot reproduce the results before the deadline, the submission is rejected and authors are encouraged to resubmit an improved version later.
         </p>
-
-        <h2>How to submit?</h2>
-        <ul>
-          <li>Upload your code to a public repository (e.g. <a href="https://github.com/" target="_blank">GitHub</a>)</li>
-          <li>Upload your data (if any) to a public repository (e.g. <a href="https://zenodo.org/" target="_blank">Zenodo</a>)</li>
-          <li>Write the corresponding paper using the proposed <a href="https://github.com/rescience/template" target="_blank">LaTeX template</a> or your own template</li>
-          <li>Fill metadata associated with your submission using the <a href="https://github.com/rescience/template" target="_blank">provided template</a></li>
-          <li><a href="https://github.com/rescience/submissions/issues/new/choose" target="_blank">Submit your paper</a></li>
-          <li>Answer reviewers comments and modify your code and paper accordingly</li>
-          <li>Once accepted, you will need to:
-            <ul>
-              <li>complete the metadata in collaboration with the editor</li>
-              <li><a href="https://guides.github.com/activities/citable-code/" target="_blank">upload your code</a> to Zenodo in order to get a DOI.</li>
-            </ul>
-          </li>
-        </ul>
 
         <h2>Criteria for Publication</h2>
         <p>To be considered for publication in ReScience C, any given submission must satisfy the following criteria:</p>
@@ -74,85 +58,23 @@
         </p>
       </div>
 
-      <div id="reviewing" class="generic-content-item">
-        <h1>The reviewing process</h1>
-        <p>
-          A submission takes the form of an issue. If you’re unfamiliar with GitHub, do not hesitate to ask advices and informations to the editor in charge of editing the submission. Reviewers unfamiliar with git should have a look at <a href="http://git-lectures.github.io" target="_blank">http://git-lectures.github.io</a>.
-        </p>
-        <p>
-          To review a submission, you’ll first have to clone the author’s repository onto your desktop environment and each time an author update the manuscript or code to get reviewer’s comment into account, you’ll have to update your local copy using the <i>git pull command</i>.
-        </p>
+      <div class="generic-content-item" id="editorial-board">
+        <h1>Editorial Board</h1>
 
-        <h2>Reviewer guidelines</h2>
-        <p><b>Successful replications</b></p>
-        <p>
-          Most articles in ReScience C report a successful replication of the results (figures, tables, …) of previously published research work. A full replication covers all the results of the original work, whereas a partial replication covers only a subset of the results.
-        </p>
-        <p>The main criteria for acceptance of a successful replication are:</p>
-        <ol>
-          <li>The actual replication of the research. The reviewer must evaluate the authors’ claims about a successful replication, applying the standards of the field.</li>
-          <li>Reproducibility of the replication. The reviewers must be able to run the proposed implementation on their computer, and obtain the same results as the authors with the limits of the state of the art of the field.</li>
-          <li>Clarity of the code and the instructions for running it. Uncommented or obfuscated code is as bad as no code at all.</li>
-          <li>Clarity and completeness of the accompanying article, in which the authors should clearly state why they think they have replicated the paper (same figures, same graphics, same behavior, etc.) and explain any obstacles they have encountered during the replication work. The reviewers should also consider if the article is sufficiently self-contained.</li>
-        </ol>
-        <p>
-          The primary goal of the review is not to decide whether to accept or reject a submission, but to help the authors improve their work until it meets the ReScience C quality standards. Since ReScience C targets replication of already published research, there is no need to judge the relevance or novelty of the work. Every replication that meets the criteria listed above is welcome in ReScience C. Rejection remains of course a possibility, in the case that the authors are not able or willing to improve their submission as deemed necessary by the reviewers.
-        </p>
-        <p>
-          When evaluating the criteria for acceptance, reviewers need to apply the standards of their field of research. There are no absolute criteria for two results/figures being equal, so both the success and the reproducibility of the replication must be judged according to the degree of equality that can be achieved given the state of the art of the field. The clarity of the code and instructions must also be judged in the light of the conventions of the field. As a general goal, any competent researcher in the field should understand the paper and be able to understand and run the code. The use of software packages that are mainstream in the field is encouraged, but not strictly required. The less well-known a software package is, the more explanation authors should provide concerning its capabilities and use.
-        </p>
+        <%- Editor.board.order('last_name ASC').each do |editor| %>
+        <%= render partial: "shared/editor", locals: { editor: editor } %>
+        <%- end %>
 
-        <p><b>Failed replications</b></p>
-        <p>
-          A replication attempt can lead to the finding that the results of the original paper cannot be reproduced, suggesting a critical mistake or omission in the original work that cannot be fixed. The failure can concern some or all of the results. ReScience C accepts reports on replication failures, but requires a particularly careful examination by the reviewers. The authors must describe in detail why they believe that the original work is mistaken, and the reviewers must be convinced by the reasoning offered by the authors.
-        </p>
-        <p>
-          Authors who are confronted with replication failure are strongly encouraged to contact the authors of the original work and try to explore the causes of the replication failure in collaboration with them. This is, however, not a requirement for publication in ReScience C.
-        </p>
-      </div>
+        <h2 id="topic-editors">Topic Editors</h2>
 
-      <div id="editing" class="generic-content-item">
-        <h1>The editing process</h1>
-        <p>
-          The role of a scientific editor is to manage a submission from start to end, i.e. from the initial acknowledgment request by the editor-in-chief to the final publication. As an editor, your goal is to help authors improve their submission in order to meet the journal’s quality standards and to ensure that anyone can re-use the published code. Depending on the specific domain, an editor might request the article to follow best practices of the domain.
-        </p>
+        <%- Editor.topic.order('last_name ASC').each do |editor| %>
+        <%= render partial: "shared/editor", locals: { editor: editor } %>
+        <%- end %>
 
-        <h2>Editor guidelines</h2>
-        <ul>
-          <li>When a <a href="https://github.com/rescience/submissions/issues" target="_blank">new submission</a> is made (i.e. a new issue has been opened), you can assign yourself in order to be the editor or you can accept an invitation to edit the submission.</li>
-          <li>Once you’ve accepted, you can either <b>reject</b> the submission and close the issue (you’ll have to motivate such decision) or <b>accept</b> the submission. You’ll then need to find and invite at least two reviewers (from within the same issue)</li>
-          <li>Once you’ve found the two reviewers, you can start the review.</li>
-          <li>During the review, reviewers are free to interact with the authors to ask for clarification or change in any file that is part of the submission.</li>
-          <li>The main criterion for acceptance is either:
-            <ul>
-              <li>Replication of the original research with a clear statement by the authors explaining why they think they have replicated the paper (same figures, same graphics, same behavior, etc.).</li>
-              <li>Non-replication of the original research with a clear statement by the authors explaining why they believe that it cannot be replicated.</li>
-              <li>Source code without any accompanying article is also a criterion for rejection since we’re not human compilers (well not all of us at least).</li>
-            </ul>
-          </li>
-          <li>Don’t forget to check that there is a license in the code repository. Authors can choose whatever open license they prefer (see the <a href="https://www.debian.org/social_contract#guidelines" target="_blank">Debian Free Software Guidelines</a>) but they need to choose one.</li>
-          <li>If both reviewers agree, the paper can be accepted.</li>
-        </ul>
-      </div>
-
-      <div id="publication" class="generic-content-item">
-        <h1>The publication process</h1>
-        <p>
-          The publication is now almost automatic but still requires some manual steps that are given in the <a href="https://github.com/rescience/articles" target="_blank">README</a> of the articles repository.
-        </p>
-        <p>
-          After publication, you can try to contact the editor and the authors of the original article to tell them about the successful (or unsuccessful) replication of their work.
-        </p>
-        <p>
-          You can also tweet about the new paper, with CC to @ReScienceEds.
-        </p>
-        <p>
-          Finally, you can close the issue.
-        </p>
-      </div>
-
-      <div id="editorial-board" class="generic-content-item">
-        <%= render partial: "content/about/editorial_board" %>
+        <% if Editor.emeritus.any? %>
+          <h2 id="editors_emeritus">Editors Emeritus</h2>
+          <p><%= Editor.emeritus.order('last_name ASC').collect {|e| e.full_name}.join(', ') %></p>
+        <% end %>
       </div>
 
       <div id="faq" class="generic-content-item">
@@ -163,18 +85,14 @@
       <div class="sub-nav">
         <nav class="menu" id="subnav">
           <a class="menu-item selected" href="#about">About</a>
-          <a class="menu-item" href="#write">Write a submission</a>
-          <a class="menu-item" href="#reviewing">The reviewing process</a>
-          <a class="menu-item" href="#editing">The editing process</a>
-          <a class="menu-item" href="#publication">The publication process</a>
+          <a class="menu-item" href="#submission-process">The submission process</a>
           <a class="menu-item" href="#editorial-board">Editorial Board</a>
-          <a class="menu-item" href="#editors-in-chief">Editors-in-Chief</a>
-          <a class="menu-item" href="#associate-editors">Associate Editors</a>
-          <a class="menu-item" href="#reviewers">Reviewers</a>
+          <a class="menu-item" href="#topic-editors">Topic Editors</a>
         </nav>
 
-        <a class="menu-btn" href="#write">Author information</a>
-        <a class="menu-btn" href="#reviewing">Reviewer guidelines</a>
+        <a class="menu-btn" href="">Author guidelines</a>
+        <a class="menu-btn" href="">Editor guidelines</a>
+        <a class="menu-btn" href="">Reviewer guidelines</a>
         <a class="menu-btn" href="#faq">Frequently Asked Questions</a>
       </div>
 

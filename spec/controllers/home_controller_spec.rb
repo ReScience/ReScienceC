@@ -35,8 +35,7 @@ describe HomeController, type: :controller do
     it "should render about page" do
       get :about, format: :html
       expect(response).to be_successful
-      expect(response.body).to match /How to submit?/
-      expect(response.body).to match /The reviewing process/
+      expect(response.body).to match /Overview of the submission process/
       expect(response.body).to match /Editorial Board/
       expect(response.body).to match /Frequently Asked Questions/
     end
