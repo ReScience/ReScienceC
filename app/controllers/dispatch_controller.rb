@@ -164,7 +164,6 @@ class DispatchController < ApplicationController
       retraction_paper.body = "Retraction notice for: #{paper.title}"
       retraction_paper.authors = "Editorial Board"
       retraction_paper.repository_url = paper.repository_url
-      retraction_paper.software_version = paper.software_version
       retraction_paper.track_id = paper.track_id
       retraction_paper.citation_string = params[:citation_string]
       retraction_paper.submission_kind = "replication"

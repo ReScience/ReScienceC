@@ -52,7 +52,6 @@ describe Paper do
       no_track_params = { title: 'Test paper',
                          body: 'A test paper description',
                          repository_url: 'http://github.com/arfon/fidgit',
-                         software_version: 'v1.0.0',
                          submitting_author: create(:user),
                          submission_kind: 'replication' }
 
@@ -72,7 +71,6 @@ describe Paper do
       no_track_params = { title: 'Test paper',
                          body: 'A test paper description',
                          repository_url: 'http://github.com/arfon/fidgit',
-                         software_version: 'v1.0.0',
                          submitting_author: create(:user),
                          submission_kind: 'replication' }
 

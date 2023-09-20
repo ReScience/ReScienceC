@@ -128,7 +128,6 @@ describe PapersController, type: :controller do
                        body: "something",
                        repository_url: "https://github.com/openjournals/joss",
                        git_branch: "joss-paper",
-                       software_version: "v1.0.1",
                        submission_kind: "replication",
                        suggested_subject: "Astronomy & astrophysics",
                        track_id: create(:track).id
@@ -161,7 +160,7 @@ describe PapersController, type: :controller do
       paper_count = Paper.count
       request.env["HTTP_REFERER"] = new_paper_path
 
-      paper_params = {title: "Yeah whateva", body: "something", repository_url: "https://github.com/foo/bar", software_version: "v1.0.1"}
+      paper_params = {title: "Yeah whateva", body: "something", repository_url: "https://github.com/foo/bar"}
       post :create, params: {paper: paper_params}
       expect(response).to be_redirect # as it's redirected us
       expect(Paper.count).to eq(paper_count)
@@ -279,14 +278,13 @@ describe PapersController, type: :controller do
 
     it "should return paper's info" do
       track = create(:track, name: "Test track", short_name: "Testtr")
-      paper = create(:under_review_paper, title: "Testing paper lookup", software_version: "3.3", track: track, meta_review_issue_id: 123)
+      paper = create(:under_review_paper, title: "Testing paper lookup", track: track, meta_review_issue_id: 123)
 
       get :lookup, params: {id: 123}
       expect(JSON.parse(response.body)['title']).to eq("Testing paper lookup")
       expect(JSON.parse(response.body)['doi']).to eq(nil)
       expect(JSON.parse(response.body)['state']).to eq("under_review")
       expect(JSON.parse(response.body)['review_issue_id']).to eq(101)
-      expect(JSON.parse(response.body)['software_version']).to eq("3.3")
       expect(JSON.parse(response.body)['repository_url']).to eq("http://github.com/arfon/fidgit")
     end
 

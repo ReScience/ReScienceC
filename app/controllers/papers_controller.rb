@@ -257,7 +257,6 @@ class PapersController < ApplicationController
                   doi: paper.doi,
                   state: paper.state,
                   review_issue_id: paper.review_issue_id,
-                  software_version: paper.software_version,
                   repository_url: paper.repository_url,
                   submitted: paper.created_at.strftime('%d %B %Y'),
                   accepted: accepted_at,
@@ -328,7 +327,7 @@ class PapersController < ApplicationController
   private
 
   def paper_params
-    params.require(:paper).permit(:title, :repository_url, :git_branch, :software_version, :body, :kind, :submission_kind, :suggested_subject, :track_id)
+    params.require(:paper).permit(:title, :repository_url, :git_branch, :body, :kind, :submission_kind, :suggested_subject, :track_id)
   end
 
   def can_see_hidden_paper?(paper)

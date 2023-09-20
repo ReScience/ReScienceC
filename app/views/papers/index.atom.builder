@@ -18,7 +18,6 @@ atom_feed do |feed|
       entry.title(paper.title)
       entry.content(type: "application/xml") do |content|
         entry.state(paper.state)
-        entry.software_version(paper.software_version)
         entry.submitted_at(paper.created_at)
         if paper.accepted?
           entry.issue paper.issue
