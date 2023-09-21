@@ -7,7 +7,7 @@ logo_url: "/logo_large.jpg"
 url: "https://resciencec.theoj.org"
 editor_email: "editor@resciencec.theoj.org"
 noreply_email: "admin@theoj.org"
-launch_date: "2016-05-05"
+launch_date: "2015-08-21"
 twitter: "@ReScienceEds"
 mastodon_url: "https://fosstodon.org/@RescienceC"
 google_analytics: ""
@@ -22,7 +22,7 @@ product: "paper" # the *thing* being submitted for review
 submission_enquiry: |-
   **Project repository URL:** INSERT YOUR REPOSITORY LINK HERE
 
-  Briefly describe your software, its research application and any questions you have about the ReScience C submission criteria.
+  Briefly describe your paper, its research application and any questions you have about the ReScience C submission criteria.
 paper_types: []
 bot_username: editorialbot
 features:
