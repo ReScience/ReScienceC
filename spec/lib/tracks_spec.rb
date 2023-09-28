@@ -8,27 +8,26 @@ RSpec.describe do
   end
 
   describe "Reference tracks" do
-    it "should be 344 in total" do
-      expect(reference_tracks.size).to eq(344)
+    it "should be 427 in total" do
+      expect(reference_tracks.size).to eq(427)
     end
 
     it "should be not have any dupes" do
-      expect(reference_tracks.uniq.size).to eq(344)
+      expect(reference_tracks.uniq.size).to eq(427)
     end
   end
 
   describe "JOSS tracks" do
-    it "should have 8 top level tracks" do
-      expect(joss_tracks['tracks'].size).to eq(8)
+    it "should have 4 top level tracks" do
+      expect(joss_tracks['tracks'].size).to eq(4)
     end
 
     it "should have the right structure" do
       expected_values = ['name', 'short_name', 'eics', 'code', 'fields']
       joss_tracks['tracks'].each_pair do |track_slug, track_values|
         expect(track_values.keys).to eq(expected_values)
-        expect(track_values['eics']).to be_a(Array)
+        expect(track_values['eics']).to be_nil
         expect(track_values['fields']).to be_a(Array)
-        expect(track_values['eics']).not_to be_empty
         expect(track_values['fields']).not_to be_empty
       end
     end
@@ -36,7 +35,7 @@ RSpec.describe do
     it "should have no dupes" do
       all_tracks = joss_tracks['tracks'].collect {|k,v| v['fields']}.flatten.uniq
 
-      expect(all_tracks.size).to eq(344)
+      expect(all_tracks.size).to eq(427)
     end
 
     it "should include all of the reference tracks" do
