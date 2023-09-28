@@ -18,7 +18,7 @@ class HomeController < ApplicationController
       @editor = current_user.editor
     end
 
-    @reviewer = params[:reviewer].nil? ? "@arfon" : params[:reviewer]
+    @reviewer = params[:reviewer].nil? ? "@rougier" : params[:reviewer]
     @reviewer_papers = Paper.unscoped.where(":reviewer = ANY(reviewers)", reviewer: @reviewer).group_by_month(:accepted_at).count
 
     @accepted_papers = Paper.unscoped.visible.group_by_month(:accepted_at).count
