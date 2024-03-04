@@ -1,23 +1,17 @@
-Reviewing for JOSS
-=======================
+Reviewing for ReScience C
+=========================
 
-Firstly, thank you so much for agreeing to review for the Journal of Open Source Software (JOSS), we're delighted to have your help. This document is designed to outline our editorial guidelines and help you understand our requirements for accepting a submission into the JOSS. Our review process is based on a tried-and-tested approach of the [rOpenSci collaboration](http://ropensci.org/blog/2016/03/28/software-review).
+Firstly, thank you so much for agreeing to review for ReScience C, we're delighted to have your help. This document is designed to outline our editorial guidelines and help you understand our requirements for accepting a submission to ReScience C.
 
 ## Guiding principles
 
-We like to think of JOSS as a 'developer friendly' journal. That is, if the submitting authors have followed best practices (have documentation, tests, continuous integration, and a license) then their review should be rapid.
+The goal of the ReScience C reviewing procedure is to help authors to improve their submission. We expect reviewers to read the submitted articles and evaluate them for clarity and scientific correctness. This is no different from what other journals do. However, we also expect reviewers to run all submitted code, and verify that they obtain the same results as the authors, to as much precision as is technically possible. Finally, we expect authors to have a look at the code and judge if they consider it understandable.
 
-For those submissions that don't quite meet the bar, please try to give clear feedback on how authors could improve their submission. A key goal of JOSS is to raise the quality of research software generally and you (the experienced reviewer) are well placed to give this feedback.
+**When you have completed your review, please leave a comment in the review issue saying so, and provide your report as a comment in the issue thread.**
 
-A JOSS review involves checking submissions against a checklist of essential software features and details in the submitted paper. This should be objective, not subjective; it should be based on the materials in the submission as perceived without distortion by personal feelings, prejudices, or interpretations.
+## ReScience C Conflict of Interest Policy
 
-We encourage reviewers to file issues against the submitted repository's issue tracker. **When you have completed your review, please leave a comment in the review issue saying so.**
-
-You can include in your review links to any new issues that you the reviewer believe to be impeding the acceptance of the repository. (Similarly, if the submitted repository is a GitHub repository, mentioning the review issue URL in the submitted repository's issue tracker will create a mention in the review issue's history.)
-
-## JOSS Conflict of Interest Policy
-
-The definition of a conflict of Interest in peer review is a circumstance that makes you "unable to make an impartial scientific judgment or evaluation." ([PNAS Conflict of Interest Policy](http://www.pnas.org/site/authors/coi.xhtml)). JOSS is concerned with avoiding any actual conflicts of interest, and being sufficiently transparent that we avoid the appearance of conflicts of interest as well.
+The definition of a conflict of Interest in peer review is a circumstance that makes you "unable to make an impartial scientific judgment or evaluation." ([PNAS Conflict of Interest Policy](http://www.pnas.org/site/authors/coi.xhtml)). ReScience C is concerned with avoiding any actual conflicts of interest, and being sufficiently transparent that we avoid the appearance of conflicts of interest as well.
 
 As a reviewer (or editor), COIs are your present or previous association with any authors of a submission: recent (past four years) collaborators in funded research or work that is published; and lifetime for the family members, business partners, and thesis student/advisor or mentor. In addition, your recent (past year) association with the same organization of a submitter is a COI, for example, being employed at the same institution.
 
