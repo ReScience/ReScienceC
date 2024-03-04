@@ -39,6 +39,8 @@ Submission is as simple as:
 - Filling in the [short submission form](https://resciencec.theoj.org/papers/new)
 - Waiting for the managing editor to start a pre-review issue over in the ReScience C reviews repository: https://github.com/ReScience/ReScienceC-reviews
 
+Submitted entries are first considered by a member of the editorial board, who may decide to reject the submission (e.g. if it is incomplete or in apporpriate), or assign it to a topic editor who will then proceed to look for reviewers. The reviewers evaluate the code and the accompanying material in continuous interaction with the authors in a GitHub isse. If the reviewers manage to run the code and obtain the same results as the ones advertised in the accompanying material, and if they consider that these results are a replication of the original work, the submission is accepted. If any of the reviewers cannot reproduce the results, the submission is rejected and authors are encouraged to resubmit an improved version.
+
 ## Article metadata
 
 ### Names
