@@ -1,9 +1,9 @@
 Interacting with EditorialBot
 =============================
 
-The Open Journals' editorial bot or `@editorialbot` on GitHub, is our editorial bot that interacts with authors, reviewers, and editors on JOSS reviews.
+The Open Journals' editorial bot or `@editorialbot` on GitHub, is our editorial bot that interacts with authors, reviewers, and editors on ReScience C reviews.
 
-`@editorialbot` can do a bunch of different things. If you want to ask `@editorialbot` what it can do, simply type the following in a JOSS `review` or `pre-review` issue:
+`@editorialbot` can do a bunch of different things. If you want to ask `@editorialbot` what it can do, simply type the following in a ReScience C `review` or `pre-review` issue:
 
 
 ```text
@@ -20,7 +20,7 @@ A subset of the EditorialBot commands are available to authors and reviewers:
 
 ### Compiling papers
 
-When a `pre-review` or `review` issue is opened, `@editorialbot` will try to compile the JOSS paper by looking for a `paper.md` file in the repository specified when the paper was submitted.
+When a `pre-review` or `review` issue is opened, `@editorialbot` will try to compile the ReScience C paper by looking for a `paper.md` file in the repository specified when the paper was submitted.
 
 If it can't find the `paper.md` file it will say as much in the review issue. If it can't compile the paper (i.e. there's some kind of Pandoc error), it will try and report that error back in the thread too.
 
@@ -58,7 +58,7 @@ If you need a generic paper file suitable for preprint servers (arXiv-like) you 
 
 ### Finding reviewers
 
-Sometimes submitting authors suggest people the think might be appropriate to review their submission. If you want the link to the current list of JOSS reviewers, type the following in the review thread:
+Sometimes submitting authors suggest people the think might be appropriate to review their submission. If you want the link to the current list of ReScience C reviewers, type the following in the review thread:
 
 ```text
 @editorialbot list reviewers
@@ -143,22 +143,6 @@ EditorialBot can remind authors and reviewers after a specified amount of time t
 .. note:: Most units of times are understood by EditorialBot e.g. `hour/hours/day/days/week/weeks`.
 ```
 
-### Setting the software archive
-
-When a submission is accepted, we ask that the authors to create an archive (on [Zenodo](https://zenodo.org/), [fig**share**](https://figshare.com/), or other) and post the archive DOI in the `REVIEW` issue. The editor should ask `@editorialbot` to add the archive to the issue as follows:
-
-```text
-@editorialbot set 10.0000/zenodo.00000 as archive
-```
-
-### Changing the software version
-
-Sometimes the version of the software changes as a consequence of the review process. To update the version of the software do the following:
-
-```text
-@editorialbot set v1.0.1 as version
-```
-
 ### Changing the git branch
 
 Sometimes the paper-md file is located in a topic branch. In order to have the PDF compiled from that branch it should be added to the issue. To update the branch value do the following (in the example, the name of the topic branch is _topic-branch-name_):
@@ -222,7 +206,7 @@ Editors can flag a paper with query-scope with the command:
 
 ### Recommending a paper for acceptance
 
-JOSS topic editors can recommend a paper for acceptance and ask for the final proofs to be created by EditorialBot with the following command:
+ReScience C topic editors can recommend a paper for acceptance and ask for the final proofs to be created by EditorialBot with the following command:
 
 ```text
 @editorialbot recommend-accept
@@ -233,11 +217,11 @@ On issuing this command, EditorialBot will also check the references of the pape
 
 ## EiC-only commands
 
-Only the JOSS editors-in-chief can accept, reject or withdraw papers.
+Only the ReScience C editors-in-chief can accept, reject or withdraw papers.
 
 ### Accepting a paper
 
-If everything looks good with the draft proofs from the `@editorialbot recommend acceptance` command, JOSS editors-in-chief can take the additional step of actually accepting the JOSS paper with the following command:
+If everything looks good with the draft proofs from the `@editorialbot recommend acceptance` command, ReScience C editors-in-chief can take the additional step of actually accepting the ReScience C paper with the following command:
 
 ```text
 @editorialbot accept
@@ -247,7 +231,7 @@ EditorialBot will accept the paper, assign it a DOI, deposit it and publish the 
 
 ### Updating an already accepted paper
 
-If the draft has been updated after a paper has been published, JOSS editors-in-chief can update the published info and PDF with the following command:
+If the draft has been updated after a paper has been published, ReScience C editors-in-chief can update the published info and PDF with the following command:
 
 ```text
 @editorialbot reaccept
@@ -258,7 +242,7 @@ EditorialBot will update the published paper and re-deposit it.
 
 ### Rejecting a paper
 
-JOSS editors-in-chief can reject a submission with the following command:
+ReScience C editors-in-chief can reject a submission with the following command:
 
 ```text
 @editorialbot reject
@@ -266,7 +250,7 @@ JOSS editors-in-chief can reject a submission with the following command:
 
 ### Withdrawing a paper
 
-JOSS editors-in-chief can withdraw a submission with the following command:
+ReScience C editors-in-chief can withdraw a submission with the following command:
 
 ```text
 @editorialbot withdraw
@@ -307,14 +291,8 @@ JOSS editors-in-chief can withdraw a submission with the following command:
 # Adds a checklist for the reviewer using this command
 @editorialbot generate my checklist
 
-# Set a value for version
-@editorialbot set v1.0.0 as version
-
-# Set a value for archive
-@editorialbot set 10.21105/zenodo.12345 as archive
-
 # Set a value for branch
-@editorialbot set joss-paper as branch
+@editorialbot set resciencec-paper as branch
 
 # Set a value for repository
 @editorialbot set https://github.com/org/repo as repository
