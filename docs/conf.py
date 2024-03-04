@@ -20,9 +20,9 @@ from recommonmark.transform import AutoStructify
 
 # -- Project information -----------------------------------------------------
 
-project = 'JOSS'
-copyright = '2023, Open Journals'
-author = 'Arfon Smith & Open Journals community'
+project = 'ReScience C'
+copyright = '2024, Open Journals'
+author = 'Open Journals community & ReScience C editors'
 
 # The short X.Y version
 version = ''
@@ -71,7 +71,7 @@ html_theme = 'sphinx_rtd_theme'
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'JOSSdoc'
+htmlhelp_basename = 'ReScienceCdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -98,7 +98,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'JOSS.tex', 'JOSS Documentation',
+    (master_doc, 'ReScienceC.tex', 'ReScience C Documentation',
      'Open Journals', 'manual'),
 ]
 
@@ -108,7 +108,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'joss', 'JOSS Documentation',
+    (master_doc, 'joss', 'ReScience C Documentation',
      [author], 1)
 ]
 
@@ -119,8 +119,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'JOSS', 'JOSS Documentation',
-     author, 'JOSS', 'One line description of project.',
+    (master_doc, 'ReScienceC', 'ReScience C Documentation',
+     author, 'ReScienceC', 'One line description of project.',
      'Miscellaneous'),
 ]
 
