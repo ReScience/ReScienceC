@@ -24,7 +24,6 @@ If you'd like to submit a paper to ReScience C, please read the author submissio
 
   submitting
   reviewer_guidelines
-  review_criteria
   review_checklist
   policies
 
