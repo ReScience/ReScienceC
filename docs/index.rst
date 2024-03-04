@@ -39,9 +39,3 @@ If you'd like to submit a paper to ReScience C, please read the author submissio
   :maxdepth: 2
 
   editorial_bot
-
-.. toctree::
-  :caption: Developer Guides
-  :maxdepth: 2
-
-  installing
