@@ -1,151 +1,88 @@
-Submitting a paper to JOSS
-==========================
+ReScience C Author guidelines
+=============================
 
-If you've already developed a fully featured research code, released it under an [OSI-approved license](https://opensource.org/licenses), and written good documentation and tests, then we expect that it should take perhaps an hour or two to prepare and submit your paper to JOSS.
-But please read these instructions carefully for a streamlined submission.
+## Article types
 
-## Submission requirements
+ReScience C accepts three types of submissions:
+ - Replication
+ - Reproduction report
+ - Letter
 
-- The software must be open source as per the [OSI definition](https://opensource.org/osd).
-- The software must be hosted at a location where users can open issues and propose code changes without manual approval of (or payment for) accounts.
-- The software must have an **obvious** research application.
-- You must be a major contributor to the software you are submitting, and have a GitHub account to participate in the review process.
-- Your paper must not focus on new research results accomplished with the software.
-- Your paper (`paper.md` and BibTeX files, plus any figures) must be hosted in a Git-based repository together with your software (although they may be in a short-lived branch which is never merged with the default).
+There is a fourth type, "editorial", but you have to join the editorial board before you can submit one!
 
-In addition, the software associated with your submission must:
+Replication articles start from an already published paper by someone else, re-implement the computational methods from that paper, and use the newly written code to obtain ideally the same results. The article describes the challenges and obstacles encountered, and comments on the agreement of the final results with those from the original publication.
 
-- Be stored in a repository that can be cloned without registration.
-- Be stored in a repository that is browsable online without registration.
-- Have an issue tracker that is readable without registration.
-- Permit individuals to create issues/file tickets against your repository.
+Reproduction reports describe attempts to re-run published code under different conditions, typically on a different computational environment. Examples would be running very old code on a modern computer, or porting code between non-standard computer systems. The report documents the required efforts and its success, which may be partial. The editors will reject submissions of trivial reproduction attempts, such as telling the world that you have successfully executed the examples from an on-line Python tutorial.
 
-### What we mean by research software
+A letter is a short article presenting a comment or opinion on the current state of reproducibility and replicability in computational science. It may or may not be accompanied by code.
 
-JOSS publishes articles about research software. This definition includes software that: solves complex modeling problems in a scientific context (physics, mathematics, biology, medicine, social science, neuroscience, engineering); supports the functioning of research instruments or the execution of research experiments; extracts knowledge from large data sets; offers a mathematical library, or similar. While useful for many areas of research, pre-trained machine learning models and notebooks are not in-scope for JOSS. 
+## Preprint Policy
 
-### Substantial scholarly effort
+Authors are welcome to submit their papers to a preprint server ([arXiv](https://arxiv.org/), [bioRxiv](https://www.biorxiv.org/), [SocArXiv](https://socopen.org/), [PsyArXiv](https://psyarxiv.com/) etc.) at any point before, during, or after the submission and review process.
 
-JOSS publishes articles about software that represent substantial scholarly effort on the part of the authors. Your software should be a significant contribution to the available open source software that either enables some new research challenges to be addressed or makes addressing research challenges significantly better (e.g., faster, easier, simpler).
+Submission to a preprint server is _not_ considered a previous publication.
 
-As a rule of thumb, JOSS' minimum allowable contribution should represent **not less than** three months of work for an individual. Some factors that may be considered by editors and reviewers when judging effort include:
+## Preparing your submission
 
-- Age of software (is this a well-established software project) / length of commit history.
-- Number of commits.
-- Number of authors.
-- Total lines of code (LOC). Submissions under 1000 LOC will usually be flagged, those under 300 LOC will be desk rejected.
-- Whether the software has already been cited in academic papers.
-- Whether the software is sufficiently useful that it is _likely to be cited_ by your peer group.
+A submission to ReScience C consists of two parts:
+ - A publicly accessible [git](https://git-scm.com/) repository containing the code.
+ - An article documenting your work.
+ 
+The article must use Markdown and must provide a metadata section at the beginning of the article (see below for its required contents). Format metadata using [YAML](https://yaml.org/), a human-friendly data serialization language. The information provided is included in the title and sidebar of the generated PDF. For more details about the Markdown format accepted by the Open Journals publishing infrastructure, as well as an example paper, see below.
 
-In addition, JOSS requires that software should be feature-complete (i.e., no half-baked solutions), packaged appropriately according to common community standards for the programming language being used (e.g., [Python](https://packaging.python.org), [R](https://r-pkgs.org/index.html)), and designed for maintainable extension (not one-off modifications of existing tools). "Minor utility" packages, including "thin" API clients, and single-function packages are not acceptable.
+The only hard rule for the code is that it may not use or otherwise depend on proprietary software. Reviewers and readers must be able to run the code without buying any licenses or signing any legal agreements.
 
-### Co-publication of science, methods, and software
+## Submitting your paper
 
-Sometimes authors prepare a JOSS publication alongside a contribution describing a science application, details of algorithm development, and/or methods assessment. In this circumstance, JOSS considers submissions for which the implementation of the software itself reflects a substantial scientific effort. This may be represented by the design of the software, the implementation of the algorithms, creation of tutorials, or any other aspect of the software. We ask that authors indicate whether related publications (published, in review, or nearing submission) exist as part of submitting to JOSS.
+Submission is as simple as:
 
-#### Other venues for reviewing and publishing software packages
+- Filling in the [short submission form](https://resciencec.theoj.org/papers/new)
+- Waiting for the managing editor to start a pre-review issue over in the ReScience C reviews repository: https://github.com/openjournals/joss-reviews
 
-Authors wishing to publish software deemed out of scope for JOSS have a few options available to them:
+> [color=red] What is the URL for the ReScience C reviews repository?
 
-- Follow [GitHub's guide](https://guides.github.com/activities/citable-code/) on how to create a permanent archive and DOI for your software. This DOI can then be used by others to cite your work.
-- Enquire whether your software might be considered by communities such as [rOpenSci](https://ropensci.org) and [pyOpenSci](https://pyopensci.org).
+## Article metadata
 
-### Should I write my own software or contribute to an existing package?
+### Names
 
-While we are happy to review submissions in standalone repositories, we also review submissions that are significant contributions made to existing packages. It is often better to have an integrated library or package of methods than a large number of single-method packages.
+Providing an author name is straight-forward: just set the name attribute. However, sometimes more control over the name is required.
 
-## Conflict of Interest policy for authors
-
-An author conflict of interest (COI) arises when an author has financial, personal, or other interests that may influence their research or the interpretation of its results. In order to maintain the integrity of the work published in JOSS, we require that authors disclose any potential conflicts of interest at submission time.
-
-### Policy
-
-**Disclosure:** All authors must disclose any potential conflicts of interest related to the research in their manuscript, including financial, personal, or professional relationships that may affect their objectivity. This includes any financial relationships, such as employment, consultancies, honoraria, stock ownership, or other financial interests that may be relevant to the research.
-
-**Acknowledgement:** Authors should acknowledge all sources of financial support for the work and include a statement indicating whether or not the sponsor had any involvement in it.
-
-**Review process:** Editors and reviewers must be informed of any potential conflicts of interest before reviewing the manuscript to ensure unbiased evaluation of the research.
-
-**Compliance:** Authors who fail to comply with the COI policy may have their manuscript rejected or retracted if a conflict is discovered after publication.
-
-**Review and Update:** This COI policy will be reviewed and updated regularly to ensure it remains relevant and effective.
-
-## Typical paper submission flow
-
-Before you submit, you should:
-
-- Make your software available in an open repository (GitHub, Bitbucket, etc.) and include an [OSI approved open source license](https://opensource.org/licenses).
-- Make sure that the software complies with the [JOSS review criteria](review_criteria). In particular, your software should be full-featured, well-documented, and contain procedures (such as automated tests) for checking correctness.
-- Write a short paper in Markdown format using `paper.md` as file name, including a title, summary, author names, affiliations, and key references. See our [example paper](#example-paper-and-bibliography) to follow the correct format.
-- (Optional) create a metadata file describing your software and include it in your repository. We provide [a script](https://gist.github.com/arfon/478b2ed49e11f984d6fb) that automates the generation of this metadata.
-
-## What should my paper contain?
-
-```eval_rst
-.. important:: Begin your paper with a summary of the high-level functionality of your software for a non-specialist reader. Avoid jargon in this section.
-```
-
-JOSS welcomes submissions from broadly diverse research areas. For this reason, we require that authors include in the paper some sentences that explain the software functionality and domain of use to a non-specialist reader. We also require that authors explain the research applications of the software. The paper should be between 250-1000 words. Authors submitting papers significantly longer than 1000 words may be asked to reduce the length of their paper.
-
-Your paper should include:
-
-- A list of the authors of the software and their affiliations, using the correct format (see the example below).
-- A summary describing the high-level functionality and purpose of the software for a diverse, *non-specialist audience*.
-- A *Statement of need* section that clearly illustrates the research purpose of the software and places it in the context of related work.
-- A list of key references, including to other software addressing related needs. Note that the references should include full names of venues, e.g., journals and conferences, not abbreviations only understood in the context of a specific discipline.
-- Mention (if applicable) a representative set of past or ongoing research projects using the software and recent scholarly publications enabled by it.
-- Acknowledgement of any financial support.
-
-As this short list shows, JOSS papers are only expected to contain a limited set of metadata (see example below), a Statement of need, Summary, Acknowledgements, and References sections. You can look at an [example accepted paper](#example-paper-and-bibliography). Given this format, a "full length" paper is not permitted, and software documentation such as API (Application Programming Interface) functionality should not be in the paper and instead should be outlined in the software documentation.
-
-```eval_rst
-.. important:: Your paper will be reviewed by two or more reviewers in a public GitHub issue. Take a look at the `review checklist <review_checklist.html>`_ and  `review criteria <review_criteria.html>`_ to better understand how your submission will be reviewed.
-```
-
-## How should my paper be formatted?
-
-Submitted articles must use Markdown and must provide a metadata section at the beginning of the article. Format metadata using YAML, a human-friendly data serialization language (The Official YAML Web Site, 2022). The information provided is included in the title and sidebar of the generated PDF. 
-
-### Article metadata
-
-#### Names
-
-Providing an author name is straight-forward: just set the `name` attribute. However, sometimes more control over the name is required.
-
-##### Name parts
+#### Name parts
 
 There are many ways to describe the parts of names; we support the following:
 
-- given names,
-- surname,
-- dropping particle,
-- non-dropping particle,
-- and suffix.
+ - given names,
+ - surname,
+ - dropping particle,
+ - non-dropping particle,
+ - and suffix.
 
 We use a heuristic to parse names into these components. This parsing may produce the wrong result, in which case it is necessary to provide the relevant parts explicitly.
 
 The respective field names are
 
-- `given-names` (aliases: `given`, `first`, `firstname`)
-- `surname` (aliases: `family`)
-- `suffix`
+ - `given-names` (aliases: `given`, `first`, `firstname`)
+ - `surname` (aliases: `family`)
+ - `suffix`
 
 The full display name will be constructed from these parts, unless the `name` attribute is given as well.
 
-##### Particles
+#### Particles
 
-It's usually enough to place particles like "van", "von", "della", etc. at the end of the given name or at the beginning of the surname, depending on the details of how the name is used.
+It’s usually enough to place particles like “van”, “von”, “della”, etc. at the end of the given name or at the beginning of the surname, depending on the details of how the name is used.
 
-- `dropping-particle`
-- `non-dropping-particle`
+ - `dropping-particle`
+ - `non-dropping-particle`
 
-##### Literal names
+> [color=red] What is the difference between a dropping and a non-dropping particle? When do I have to use either one, considering that it's "usually enough" to add particles to the name fields?
 
-The automatic construction of the full name from parts is geared towards common Western names. It may therefore be necessary sometimes to provide the display name explicitly. This is possible by setting the `literal` field, e.g., `literal: Tachibana Taki`. This feature should only be used as a last resort. <!-- e.g., `literal: 宮水 三葉`. -->
+#### Literal names
 
-##### Example
+The automatic construction of the full name from parts is geared towards common Western names. It may therefore be necessary sometimes to provide the display name explicitly. This is possible by setting the `literal` field, e.g., `literal: Tachibana Taki`. This feature should only be used as a last resort.
 
-```yaml
+#### Example
+
+```
 authors:
   - name: John Doe
     affiliation: '1'
@@ -162,69 +99,22 @@ authors:
     affiliation: '4'
 ```
 
-The name parts can also be collected under the author's `name`:
+The name parts can also be collected under the author’s name:
 
-``` yaml
+```
 authors:
   - name:
       given-names: Kari
       surname: Nordmann
 ```
 
-  <!-- - name: -->
-  <!--     literal: 立花 瀧 -->
-  <!--     given-names: 瀧 -->
-  <!--     surname: 立花 -->
+> [color=red] BG: Do I understand correctly that the only required metadata is the name of the authors? I am quite surprised... In the past we had the reference of the replicated paper, the link to the repository, to the paper... All of these are not necessary anymore?
 
+## Markdown
 
-### Internal references
-
-The goal of Open Journals is to provide authors with a seamless and pleasant writing experience. Since Markdown has no default mechanism to handle document internal references, known as “cross-references”, Open Journals supports a limited set of LaTex commands. In brief, elements that were marked with `\label` and can be referenced with `\ref` and `\autoref`.
-
-[Open Journals]: https://theoj.org
-
-    ![View of coastal dunes in a nature reserve on Sylt, an island in
-    the North Sea. Sylt (Danish: *Slid*) is Germany's northernmost
-    island.](sylt.jpg){#sylt width="100%"}
-
-#### Tables and figures
-
-Tables and figures can be referenced if they are given a *label* in the caption. In pure Markdown, this can be done by adding an empty span `[]{label="floatlabel"}` to the caption. LaTeX syntax is supported as well: `\label{floatlabel}`.
-
-Link to a float element, i.e., a table or figure, with `\ref{identifier}` or `\autoref{identifier}`, where `identifier` must be defined in the float's caption. The former command results in just the float's number, while the latter inserts the type and number of the referenced float. E.g., in this document `\autoref{proglangs}` yields "\autoref{proglangs}", while `\ref{proglangs}` gives "\ref{proglangs}".
-
-: Comparison of programming languages used in the publishing tool. []{label="proglangs"}
-
-    | Language | Typing          | Garbage Collected | Evaluation | Created |
-    |----------|:---------------:|:-----------------:|------------|---------|
-    | Haskell  | static, strong  | yes               | non-strict | 1990    |
-    | Lua      | dynamic, strong | yes               | strict     | 1993    |
-    | C        | static, weak    | no                | strict     | 1972    |
-
-#### Equations
-
-Cross-references to equations work similarly to those for floating elements. The difference is that, since captions are not supported for equations, the label must be included in the equation:
-
-    $$a^n + b^n = c^n \label{fermat}$$
-
-Referencing, however, is identical, with `\autoref{eq:fermat}` resulting in "\autoref{eq:fermat}".
-
-$$a^n + b^n = c^n \label{eq:fermat}$$
-
-Authors who do not wish to include the label directly in the formula can use a Markdown span to add the label:
-
-    [$$a^n + b^n = c^n$$]{label="eq:fermat"}
-
-### Behind the scenes
-
-Readers may wonder about the reasons behind some of the choices made for paper writing. Most often, the decisions were driven by radical pragmatism. For example, Markdown is not only nearly ubiquitous in the realms of software, but it can also be converted into many different output formats. The archiving standard for scientific articles is JATS, and the most popular publishing format is PDF. Open Journals has built its pipeline based on [pandoc](https://pandoc.org), a universal document converter that can produce both of these publishing formats as well as many more.
-
-A common method for PDF generation is to go via LaTeX. However, support for tagging -- a requirement for accessible PDFs -- is not readily available for LaTeX. The current method used ConTeXt, to produce tagged PDF/A-3.
-
-### Markdown
 Markdown is a lightweight markup language used frequently in software development and online environments. Based on email conventions, it was developed in 2004 by John Gruber and Aaron Swartz. 
 
-#### Inline markup
+### Inline markup
 
 The markup in Markdown should be semantic, not presentations. The table below has some basic examples.
 
@@ -248,14 +138,14 @@ The markup in Markdown should be semantic, not presentations. The table below ha
     | inline code         | `` `return 23` ``       | `return 23`           |
     +---------------------+-------------------------+-----------------------+
 
-#### Links
+### Links
 
 Link syntax is `[link description](targetURL)`. E.g., this link to the [Journal of Open Source Software](https://joss.theoj.org/) is written as \
 `[Journal of Open Source Software](https://joss.theoj.org/)`.
 
 Open Journal publications are not limited by the constraints of print publications. We encourage authors to use hyperlinks for websites and other external resources. However, the standard scientific practice of citing the relevant publications should be followed regardless.
 
-#### Grid Tables
+### Grid Tables
 
 Grid tables are made up of special characters which form the rows and columns, and also change table and style variables.
 
@@ -276,6 +166,8 @@ Grid table syntax uses the characters "-", "=", "|", and "+" to represent the ta
 
 Note: Inserting a colon (:) at the boundaries of the separator line after the header will change text alignment. If there is no header, insert colons into the top line.
 
+> [color=red] BG: I do not understand what it means that the semicolon will change the text alignement: it will change it in what way?
+
 Sample grid table:
 
     +-------------------+------------+----------+----------+
@@ -293,7 +185,7 @@ Sample grid table:
     | Footer                                               |
     +===================+============+=====================+
 
-#### Figures and Images
+### Figures and Images
 
 To create a figure, a captioned image must appear by itself in a paragraph. The Markdown syntax for a figure is a link, preceded by an exclamation point (!) and a description.  
 Example:  
@@ -303,27 +195,19 @@ In order to create a figure rather than an image, there must be a description in
 
 Images that are larger than the text area are scaled to fit the page. You can give images an explicit height and/or width, e.g. when adding an image as part of a paragraph. The Markdown `![Nyan cat](nyan-cat.png){height="9pt"}` includes the image saved as `nyan-cat.png` while scaling it to a height of 9 pt.
 
-#### Citations
+### Citations
 
 Bibliographic data should be collected in a file `paper.bib`; it should be formatted in the BibLaTeX format, although plain BibTeX is acceptable as well. All major citation managers offer to export these formats.
 
-Cite a bibliography entry by referencing its identifier: `[@upper1974]`
-will create the reference "(Upper 1974)". Omit the brackets when
-referring to the author as part of a sentence: "For a case study on
-writers block, see Upper (1974)." Please refer to the [pandoc
-manual](https://pandoc.org/MANUAL#extension-citations) for additional
-features, including page locators, prefixes, suffixes, and suppression
-of author names in citations.
+Cite a bibliography entry by referencing its identifier: `[@upper1974]` will create the reference "(Upper 1974)". Omit the brackets when referring to the author as part of a sentence: "For a case study on writer's block, see Upper (1974)." Please refer to the [pandoc manual](https://pandoc.org/MANUAL#extension-citations) for additional features, including page locators, prefixes, suffixes, and suppression of author names in citations.
 
 The full citation will display as
 
-> Upper, D. 1974. "The Unsuccessful Self-Treatment of a Case of \"Writer's
-> Block\"." *Journal of Applied Behavior Analysis* 7 (3): 497.
-> <https://doi.org/10.1901/jaba.1974.7-497a>.
+> Upper, D. 1974. "The Unsuccessful Self-Treatment of a Case of \"Writer's Block\"." *Journal of Applied Behavior Analysis* 7 (3): 497. <https://doi.org/10.1901/jaba.1974.7-497a>.
 
-#### Mathematical Formulæ
+### Mathematical Formulæ
 
-Mark equations and other math content with dollar signs ($). Use a single dollar sign ($) for math that will appear directly within the text. Use two dollar signs ($$) when the formula is to be presented centered and on a separate line, in "display" style. The formula itself must be given using TeX syntax.
+Mark equations and other math content with dollar signs (`$`). Use a single dollar sign (`$`) for math that will appear directly within the text. Use two dollar signs (`$$`) when the formula is to be presented centered and on a separate line, in "display" style. The formula itself must be given using TeX syntax.
 
 To give some examples: When discussing a variable *x* or a short formula like
 
@@ -344,7 +228,7 @@ will give us
 
 $$\int_{-\infty}^{+\infty} e^{-x^2} \, dx = \sqrt{\pi}$$
 
-#### Footnotes
+### Footnotes
 
 Syntax for footnotes centers around the "caret" character `^`. The symbol is also used as a delimiter for superscript text and thereby mirrors the superscript numbers used to mark a footnote in the final text.
 
@@ -370,11 +254,11 @@ The above example results in the following output:
 Note: numbers do not have to be sequential, they will be reordered automatically in the publishing step. In fact, the identifier of a note can be any sequence of characters, like `[^marker]`, but may not contain whitespace characters.
 
 
-#### Blocks
+### Blocks
 
 The larger components of a document are called "blocks".
 
-##### Headings
+#### Headings
 
 Headings are added with `#` followed by a space, where each additional `#` demotes the heading to a level lower in the hierarchy:
 
@@ -388,12 +272,12 @@ Headings are added with `#` followed by a space, where each additional `#` demot
 
 Please start headings on the first level. The maximum supported level is 5, but paper authors are encouraged to limit themselves to headings of the first two or three levels.
 
-###### Deeper nesting
+##### Deeper nesting
 
 Fourth- and fifth-level subsections – like this one and the following heading – are supported by the system; however, their use is discouraged. Use lists instead of fourth- and fifth-level headings.
 
 
-#### Lists
+### Lists
 
 Bullet lists and numbered lists, a.k.a. enumerations, offer an additional method to present sequential and hierarchical information.
 
@@ -425,9 +309,52 @@ Rendered:
 0. If two systems are each in thermal equilibrium with a third, they are also in thermal equilibrium with each other.
 1. In a process without transfer of matter, the change in internal energy, $\Delta U$, of a thermodynamic system is equal to the energy gained as heat, $Q$, less the thermodynamic work, $W$, done by the system on its surroundings. $$\Delta U = Q - W$$
 
+### Internal references
+
+Since Markdown has no default mechanism to handle document internal references, known as “cross-references”, Open Journals supports a limited set of LaTex commands. In brief, elements that were marked with `\label` and can be referenced with `\ref` and `\autoref`.
+
+[Open Journals]: https://theoj.org
+
+    ![View of coastal dunes in a nature reserve on Sylt, an island in
+    the North Sea. Sylt (Danish: *Slid*) is Germany's northernmost
+    island.](sylt.jpg){#sylt width="100%"}
+
+> [color=red] I don't understand how this example relates to the paragraph above it.
+
+#### Tables and figures
+
+Tables and figures can be referenced if they are given a *label* in the caption. In pure Markdown, this can be done by adding an empty span `[]{label="floatlabel"}` to the caption. LaTeX syntax is supported as well: `\label{floatlabel}`.
+
+Link to a float element, i.e., a table or figure, with `\ref{identifier}` or `\autoref{identifier}`, where `identifier` must be defined in the float's caption. The former command results in just the float's number, while the latter inserts the type and number of the referenced float. E.g., in this document `\autoref{proglangs}` yields "\autoref{proglangs}", while `\ref{proglangs}` gives "\ref{proglangs}".
+
+> [color=red] The two examples make no sense at all to me.
+
+: Comparison of programming languages used in the publishing tool. []{label="proglangs"}
+
+    | Language | Typing          | Garbage Collected | Evaluation | Created |
+    |----------|:---------------:|:-----------------:|------------|---------|
+    | Haskell  | static, strong  | yes               | non-strict | 1990    |
+    | Lua      | dynamic, strong | yes               | strict     | 1993    |
+    | C        | static, weak    | no                | strict     | 1972    |
+
+#### Equations
+
+Cross-references to equations work similarly to those for floating elements. The difference is that, since captions are not supported for equations, the label must be included in the equation:
+
+    $$a^n + b^n = c^n \label{fermat}$$
+
+Referencing, however, is identical, with `\autoref{eq:fermat}` resulting in "\autoref{eq:fermat}".
+
+$$a^n + b^n = c^n \label{eq:fermat}$$
+
+Authors who do not wish to include the label directly in the formula can use a Markdown span to add the label:
+
+    [$$a^n + b^n = c^n$$]{label="eq:fermat"}
+
+
 ## Example paper and bibliography
 
-This example `paper.md` is adapted from _Gala: A Python package for galactic dynamics_ by Adrian M. Price-Whelan [http://doi.org/10.21105/joss.00388](http://doi.org/10.21105/joss.00388).
+This example `paper.md` is adapted from _Gala: A Python package for galactic dynamics_ by Adrian M. Price-Whelan [http://doi.org/10.21105/joss.00388](http://doi.org/10.21105/joss.00388), published in [The Journal of Open Source Software](https://joss.theoj.org/), which uses the same publishing infrastructure as ReScience C.
 
 For a complete description of available options to describe author names [see here](#names).
 
@@ -622,9 +549,11 @@ Note that the paper begins by a metadata section (the enclosing --- lines are ma
 
 ## Checking that your paper compiles
 
-JOSS uses Pandoc to compile papers from their Markdown form into a PDF. There are a few different ways you can test that your paper is going to compile properly for JOSS:
+ReScience C uses Pandoc to compile papers from their Markdown form into a PDF. There are a few different ways you can test that your paper is going to compile properly for ReScience C:
 
 ### GitHub Action
+
+> [color=red] Do we have this GitHub Action for ReScience C as well?
 
 If you're using GitHub for your repository, you can use the [Open Journals GitHub Action](https://github.com/marketplace/actions/open-journals-pdf-generator) to automatically compile your paper each time you update your repository.
 
@@ -638,7 +567,7 @@ If you have Docker installed on your local machine, you can use the same Docker 
 docker run --rm \
     --volume $PWD/paper:/data \
     --user $(id -u):$(id -g) \
-    --env JOURNAL=joss \
+    --env JOURNAL=resciencec \
     openjournals/inara
 ```
 
@@ -646,50 +575,4 @@ docker run --rm \
 
 The materials for the `inara` container image above are themselves open source and available in [its own repository](https://github.com/openjournals/inara). You can clone that repository and run the `inara` script locally with `make` after installing the necessary dependencies, which can be inferred from the [`Dockerfile`](https://github.com/openjournals/inara/blob/main/Dockerfile).
 
-## Submitting your paper
 
-Submission is as simple as:
-
-- Filling in the [short submission form](http://joss.theoj.org/papers/new)
-- Waiting for the managing editor to start a pre-review issue over in the JOSS reviews repository: https://github.com/openjournals/joss-reviews
-
-## No submission fees
-
-There are no fees for submitting or publishing in JOSS. You can read more about our [cost and sustainability model](http://joss.theoj.org/about#costs).
-
-## Preprint Policy
-
-Authors are welcome to submit their papers to a preprint server ([arXiv](https://arxiv.org/), [bioRxiv](https://www.biorxiv.org/), [SocArXiv](https://socopen.org/), [PsyArXiv](https://psyarxiv.com/) etc.) at any point before, during, or after the submission and review process.
-
-Submission to a preprint server is _not_ considered a previous publication.
-
-## Authorship
-
-Purely financial (such as being named on an award) and organizational (such as general supervision of a research group) contributions are not considered sufficient for co-authorship of JOSS submissions, but active project direction and other forms of non-code contributions are. The authors themselves assume responsibility for deciding who should be credited with co-authorship, and co-authors must always agree to be listed. In addition, co-authors agree to be accountable for all aspects of the work, and to notify JOSS if any retraction or correction of mistakes are needed after publication.
-
-## Submissions using proprietary languages/development environments
-
-We strongly prefer software that doesn't rely upon proprietary (paid for) development environments/programming languages. However, provided _your submission meets our requirements_ (including having a valid open source license) then we will consider your submission for review. Should your submission be accepted for review, we may ask you, the submitting author, to help us find reviewers who already have the required development environment installed.
-
-## The review process
-
-After submission:
-
-- An Associate Editor-in-Chief will carry out an initial check of your submission, and proceed to assign a handling editor.
-- The handling editor will assign two or more JOSS reviewers, and the review will be carried out in the [JOSS reviews repository](https://github.com/openjournals/joss-reviews).
-- Authors will respond to reviewer-raised issues (if any are raised) on the submission repository's issue tracker. Reviewer and editor contributions, like any other contributions, should be acknowledged in the repository. 
-- **JOSS reviews are iterative and conversational in nature.** Reviewers are encouraged to post comments/questions/suggestions in the review thread as they arise, and authors are expected to respond in a timely fashion.
-- Authors and reviewers are asked to be patient when waiting for a response from an editor. Please allow a week for an editor to respond to a question before prompting them for further action.
-- Upon successful completion of the review, authors will make a tagged release of the software, and deposit a copy of the repository with a data-archiving service such as [Zenodo](https://zenodo.org/) or [figshare](https://figshare.com/), get a DOI for the archive, and update the review issue thread with the version number and DOI.
-- After we assign a DOI for your accepted JOSS paper, its metadata is deposited with CrossRef and listed on the JOSS website.
-- The review issue will be closed, and automatic posts from [@JOSS_TheOJ at Twitter](https://twitter.com/JOSS_TheOJ) and [@JOSS at Mastodon](https://fosstodon.org/@joss) will announce it!
-
-If you want to learn more details about the review process, take a look at the [reviewer guidelines](reviewer_guidelines).
-
-## Confidential requests
-
-Please write admin@theoj.org with confidential matters such as retraction requests, report of misconduct, and retroactive author name changes.
-
-In the event of a name change request, the DOI will remain unchanged, and the paper will be updated without the publication of a correction notice. Please note that because JOSS submissions are managed publicly, updates to papers are visible in the public record (e.g., in the [JOSS papers repository](https://github.com/openjournals/joss-papers) commit history).
-
-JOSS will also update Crossref metadata.
