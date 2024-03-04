@@ -37,9 +37,7 @@ The only hard rule for the code is that it may not use or otherwise depend on pr
 Submission is as simple as:
 
 - Filling in the [short submission form](https://resciencec.theoj.org/papers/new)
-- Waiting for the managing editor to start a pre-review issue over in the ReScience C reviews repository: https://github.com/openjournals/joss-reviews
-
-> [color=red] What is the URL for the ReScience C reviews repository?
+- Waiting for the managing editor to start a pre-review issue over in the ReScience C reviews repository: https://github.com/ReScience/ReScienceC-reviews
 
 ## Article metadata
 
